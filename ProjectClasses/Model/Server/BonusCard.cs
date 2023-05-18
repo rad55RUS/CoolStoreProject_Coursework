@@ -28,7 +28,7 @@ namespace CoolStoreProject
         //
 
         // Constructors
-        BonusCard(string number, int bonuses)
+        public BonusCard(string number, int bonuses)
         {
             this.number = number;
             this.bonuses = bonuses;

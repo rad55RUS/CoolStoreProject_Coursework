@@ -5,18 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CoolStoreProject"
         mc:Ignorable="d"
-        Title="View_UserActions" Height="450" Width="800">
-    <Grid>
-        <ListBox ItemsSource="{Binding Users}" Margin="0,0,400,0" SelectedItem="{Binding CurrentUser}">
+        Title="View_UserActions" Height="450" Width="458" MinHeight="150" MinWidth="458">
+    <Grid RenderTransformOrigin="0.805,0.504">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox ItemsSource="{Binding Users}" SelectedItem="{Binding CurrentUser}" Margin="0,33,0,43">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="5">
-                        <TextBlock FontSize="18" Text="{Binding Path=Cash}" />
-                        <TextBlock Text="{Binding Path=CardMoney}" />
-                        <TextBlock Text="{Binding Path=BonusCard}" />
+                        <TextBlock Text="{Binding Path=ID_Representation}" />
+                        <TextBlock Text="{Binding Path=Cash_Representation}" />
+                        <TextBlock Text="{Binding Path=CardMoney_Representation}" />
+                        <TextBlock Text="{Binding Path=BonusCard_Representation}" />
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Select user example from the list and press button to begin" VerticalAlignment="Top" Height="33" Width="458" FontSize="16" Grid.ColumnSpan="2" TextAlignment="Center"/>
+        <Button Content="Button" HorizontalAlignment="Stretch"  VerticalAlignment="Bottom" Width="458" Height="43" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>
