@@ -1,0 +1,22 @@
+﻿<Window x:Class="CoolStoreProject.View_UserActions"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CoolStoreProject"
+        mc:Ignorable="d"
+        Title="View_UserActions" Height="450" Width="800">
+    <Grid>
+        <ListBox ItemsSource="{Binding Users}" Margin="0,0,400,0" SelectedItem="{Binding CurrentUser}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="5">
+                        <TextBlock FontSize="18" Text="{Binding Path=Cash}" />
+                        <TextBlock Text="{Binding Path=CardMoney}" />
+                        <TextBlock Text="{Binding Path=BonusCard}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>

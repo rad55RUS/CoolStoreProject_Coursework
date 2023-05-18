@@ -5,21 +5,21 @@ xsi:noNamespaceSchemaLocation="Schemas\Users_Schema.xsd">
   <User>
     <Cash>490</Cash>
     <CardMoney>0</CardMoney>
-    <BonusCard>"3131-4141-5353-7474"</BonusCard>
+    <BonusCard>3131-4141-5353-7474</BonusCard>
   </User>
   <User>
     <Cash>0</Cash>
     <CardMoney>8241</CardMoney>
-    <BonusCard>"4387-3458-3874-3412"</BonusCard>
+    <BonusCard>4387-3458-3874-3412</BonusCard>
   </User>
   <User>
     <Cash>0</Cash>
     <CardMoney>0</CardMoney>
-    <BonusCard>"6841-5134-7913-5408"</BonusCard>
+    <BonusCard>6841-5134-7913-5408</BonusCard>
   </User>
   <User>
     <Cash>668</Cash>
     <CardMoney>542</CardMoney>
-    <BonusCard>"8463-8452-1852-3542"</BonusCard>
+    <BonusCard>8463-8452-1852-3542</BonusCard>
   </User>
 </Users>
