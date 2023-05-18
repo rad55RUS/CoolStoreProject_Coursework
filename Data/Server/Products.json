@@ -1,9 +1,8 @@
 {
   "Products": [
     {
-      "ID": 0,
       "Name": "Бананы",
-      "Icon": "/Images/Бананы.png",
+      "Image": "/Images/Бананы.png",
       "Price": 137,
       "IsWeighable": true,
       "Weight": 1000
@@ -11,9 +10,8 @@
       //
     },
     {
-      "ID": 1,
       "Name": "Кефир Простоквашино 3,2%",
-      "Icon": "/Images/Кефир Простоквашино 3,2%.png",
+      "Image": "/Images/Кефир Простоквашино 3,2%.png",
       "Price": 90,
       "IsWeighable": true,
       "Volume": 930
@@ -21,9 +19,8 @@
       //
     },
     {
-      "ID": 2,
       "Name": "Яблоки Гольден",
-      "Icon": "/Images/Яблоки Гольден.png",
+      "Image": "/Images/Яблоки Гольден.png",
       "Price": 110,
       "IsWeighable": true,
       "Weight": 1000
@@ -31,9 +28,8 @@
       //
     },
     {
-      "ID": 3,
       "Name": "Шоколадный батончик Snickers Super",
-      "Icon": "/Images/Шоколадный батончик Snickers Super.png",
+      "Image": "/Images/Шоколадный батончик Snickers Super.png",
       "Price": 80,
       "IsWeighable": false,
       "Weight": 80
@@ -41,9 +37,8 @@
       //
     },
     {
-      "ID": 4,
       "Name": "Батон Нарезной Московский ТМ Хлебный дом",
-      "Icon": "/Images/Батон Нарезной Московский ТМ Хлебный дом.png",
+      "Image": "/Images/Батон Нарезной Московский ТМ Хлебный дом.png",
       "Price": 36,
       "IsWeighable": false,
       "Weight": 350
@@ -51,9 +46,8 @@
       //
     },
     {
-      "ID": 5,
       "Name": "Стейк говяжий Праймбиф Минутка без кости категория А охлаждённый, 400г",
-      "Icon": "/Images/Стейк говяжий Праймбиф Минутка без кости категория А охлаждённый, 400г.png",
+      "Image": "/Images/Стейк говяжий Праймбиф Минутка без кости категория А охлаждённый, 400г.png",
       "Price": 660,
       "IsWeighable": false,
       "Weight": 400
@@ -61,9 +55,8 @@
       //
     },
     {
-      "ID": 6,
       "Name": "Драже Nattys Crush Peanut c арахисом в арахисовой пасте и какао",
-      "Icon": "/Images/Драже Nattys Crush Peanut c арахисом в арахисовой пасте и какао.png",
+      "Image": "/Images/Драже Nattys Crush Peanut c арахисом в арахисовой пасте и какао.png",
       "Price": 300,
       "IsWeighable": false,
       "Weight": 80
@@ -71,9 +64,8 @@
       //
     },
     {
-      "ID": 7,
       "Name": "Шоколад молочный с медово-миндальной нугой ТМ Toblerone",
-      "Icon": "/Images/Шоколад молочный с медово-миндальной нугой ТМ Toblerone.png",
+      "Image": "/Images/Шоколад молочный с медово-миндальной нугой ТМ Toblerone.png",
       "Price": 380,
       "IsWeighable": false,
       "Weight": 100
@@ -81,9 +73,8 @@
       //
     },
     {
-      "ID": 8,
       "Name": "Лапша быстрого приготовления 'Доширак' со вкусом курицы",
-      "Icon": "/Images/Лапша быстрого приготовления Доширак со вкусом курицы.png",
+      "Image": "/Images/Лапша быстрого приготовления Доширак со вкусом курицы.png",
       "Price": 72,
       "IsWeighable": false,
       "Weight": 90
@@ -91,9 +82,8 @@
       //
     },
     {
-      "ID": 9,
       "Name": "Пиво Светлое Tuborg Green",
-      "Icon": "/Images/Пиво Светлое Tuborg Green.png",
+      "Image": "/Images/Пиво Светлое Tuborg Green.png",
       "Price": 64,
       "IsWeighable": false,
       "Volume": 450
