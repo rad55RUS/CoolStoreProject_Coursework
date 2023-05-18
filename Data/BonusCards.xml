@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<BonusCards
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="Schemas\BonusCards_Schema.xsd">
+	<BonusCard>
+		<Number>"3131-4141-5353-7474"</Number>
+		<Bonuses>424</Bonuses>
+	</BonusCard>
+	<BonusCard>
+		<Number>"4387-3458-3874-3412"</Number>
+		<Bonuses>100</Bonuses>
+	</BonusCard>
+	<BonusCard>
+		<Number>"6841-5134-7913-5408"</Number>
+		<Bonuses>0</Bonuses>
+	</BonusCard>
+	<BonusCard>
+		<Number>"8463-8452-1852-3542"</Number>
+		<Bonuses>15405</Bonuses>
+	</BonusCard>
+</BonusCards>
