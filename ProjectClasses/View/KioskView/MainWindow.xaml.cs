@@ -10,20 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace CoolStoreProject
 {
     /// <summary>
-    /// Логика взаимодействия для View_UserActions.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class View_UserActions : Window
+    public partial class MainWindow : Window
     {
-        public View_UserActions()
+        public MainWindow()
         {
             InitializeComponent();
-
-            DataContext = new UserActions_ViewModel();
         }
     }
 }

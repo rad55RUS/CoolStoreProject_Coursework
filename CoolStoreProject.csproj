@@ -17,8 +17,38 @@
     <None Update="Data\BonusCards.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Data\Products.xml">
+    <None Update="Data\Images\Бананы.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\Images\Батон Нарезной Московский ТМ Хлебный дом.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\Images\Драже Nattys Crush Peanut c арахисом в арахисовой пасте и какао.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\Images\Кефир Простоквашино 3,2%25.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\Images\Лапша быстрого приготовления Доширак со вкусом курицы.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\Images\Пиво Светлое Tuborg Green.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\Images\Стейк говяжий Праймбиф Минутка без кости категория А охлаждённый, 400г.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\Images\Шоколад молочный с медово-миндальной нугой ТМ Toblerone.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\Images\Шоколадный батончик Snickers Super.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\Images\Яблоки Гольден.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\Products.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Data\Schemas\BonusCards_Schema.xsd">
       <SubType>Designer</SubType>
@@ -27,7 +57,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Update="Data\Users.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 

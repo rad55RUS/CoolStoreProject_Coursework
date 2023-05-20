@@ -2,8 +2,21 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:CoolStoreProject"
-             StartupUri="ProjectClasses\View\UserActions_View.xaml">
+             StartupUri="ProjectClasses\View\UserView\UserWindow.xaml">
     <Application.Resources>
-         
+        <Style BasedOn="{StaticResource {x:Type Button}}"
+           TargetType="Button"
+           x:Key="CommonButton">
+            <Setter Property="BorderBrush" Value="#FF0084FF"/>
+            <Setter Property="Background" Value="#FFFBFEFF"/>
+            <Setter Property="BorderThickness" Value="3"/>
+        </Style>
+        <Style BasedOn="{StaticResource {x:Type Button}}"
+           TargetType="Button"
+           x:Key="FinishButton">
+            <Setter Property="BorderBrush" Value="#FFC81B1B"/>
+            <Setter Property="Background" Value="#FFFBFEFF"/>
+            <Setter Property="BorderThickness" Value="3"/>
+        </Style>
     </Application.Resources>
 </Application>

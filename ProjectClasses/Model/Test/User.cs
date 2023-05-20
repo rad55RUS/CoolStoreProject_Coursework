@@ -18,7 +18,7 @@ namespace CoolStoreProject
         private static int amount = 0;
         //
         // Data
-        private int id;
+        private readonly int id;
         private double cash;
         private double cardMoney;
         private string bonusCard;

@@ -1,0 +1,30 @@
+﻿<Page x:Class="CoolStoreProject.UserPage_Selection"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CoolStoreProject"
+        mc:Ignorable="d"
+        Title="User selection" Height="450" Width="458" MinHeight="150" MinWidth="458">
+    <Grid RenderTransformOrigin="0.805,0.504" Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox ItemsSource="{Binding Users}" SelectedItem="{Binding CurrentUser}" Margin="0,33,0,79">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="5">
+                        <TextBlock Text="{Binding ID_Representation}"/>
+                        <TextBlock Text="{Binding Cash_Representation}"/>
+                        <TextBlock Text="{Binding CardMoney_Representation}"/>
+                        <TextBlock Text="{Binding BonusCard_Representation}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Select user example from the list and press button to begin" VerticalAlignment="Top" Height="33" Width="458" FontSize="16" Grid.ColumnSpan="2" TextAlignment="Center" Background="#FFF9FCFF" Foreground="Black"/>
+        <Button Content="Start" HorizontalAlignment="Stretch"  VerticalAlignment="Bottom" Width="458" Height="43" Grid.ColumnSpan="2" Style="{StaticResource CommonButton}" Command="{Binding StartCommand}"/>
+        <Label Content="{Binding WarningText}" HorizontalAlignment="Center" Height="31" Margin="0,376,0,0" VerticalAlignment="Top" Width="458" Background="#00000000" Foreground="#FFBB1111"/>
+    </Grid>
+</Page>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
@@ -28,6 +29,7 @@ namespace CoolStoreProject
         //
 
         // Properties
+        // Data
         public int Id {
             get => id;
             set => id = value;
@@ -56,6 +58,31 @@ namespace CoolStoreProject
             set => volume = value;
         }
         //
+        // Representation
+        public string Name_Representation
+        {
+            get => name;
+        }
+        public string Price_Representation
+        {
+            get => "Price: " + price.ToString() + " RUB";
+        }
+        public string VolumeWeight_Representation
+        {
+            get
+            {
+                if (volume != 0)
+                {
+                    return "Volume: " + volume.ToString() + " milliliters";
+                }
+                else
+                {
+                    return "Weight: " + weight.ToString() + " grams";
+                }
+            }
+        }
+        //
+        //
 
         // Constructors
         public Product(string name, string imagePath, double price, bool isWeighable, int weight)
@@ -64,7 +91,7 @@ namespace CoolStoreProject
 
             this.id = amount;
             this.name = name;
-            this.image = new BitmapImage(new(imagePath));
+            this.image = new BitmapImage(new(@imagePath, UriKind.RelativeOrAbsolute));
             this.price = price;
             this.isWeighable = isWeighable;
             this.weight = weight;
@@ -76,7 +103,7 @@ namespace CoolStoreProject
 
             this.id = amount;
             this.name = name;
-            this.image = new BitmapImage(new(imagePath));
+            this.image = new BitmapImage(new(@imagePath, UriKind.RelativeOrAbsolute));
             this.price = price;
             this.isWeighable = false;
             this.volume = volume;

@@ -13,12 +13,16 @@ using System.Xml;
 
 namespace CoolStoreProject
 {
-    internal class UserActions_ViewModel : INotifyPropertyChanged
+    internal class UserPage_Selection_ViewModel : INotifyPropertyChanged
     {
-        private User currentUser;
+        // Fields
+        private User ?currentUser;
+        private string warningText;
+        //
 
-        public ObservableCollection<User> Users { get; set; }
-        public User CurrentUser {
+        // Properties
+        public ObservableCollection<User> ?Users { get; set; }
+        public User ?CurrentUser {
             get => currentUser;
             set
             {
@@ -26,21 +30,38 @@ namespace CoolStoreProject
                 OnPropertyChanged("CurrentUser");
             }
         }
+        public string ?WarningText
+        {
+            get => warningText;
+            set
+            {
+                warningText = value;
+                OnPropertyChanged("WarningText");
+            }
+        }
+        //
 
-        public UserActions_ViewModel()
+        // Constructors
+        public UserPage_Selection_ViewModel()
         {
             LoadUserData(Environment.CurrentDirectory + @"\Data\Users.xml");
-            Console.Write("");
         }
+        //
 
+        // Methods
+        /// <summary>
+        /// Load user data from Users.xml
+        /// </summary>
+        /// <param name="path"></param>
+        /// <exception cref="Exception"></exception>
         public void LoadUserData(string path)
         {
             try
             {
                 Users = new ObservableCollection<User>();
-                XmlDocument users_XML = new XmlDocument();
+                XmlDocument users_XML = new();
                 users_XML.Load(path);
-                XmlElement users_Root = users_XML.DocumentElement;
+                XmlElement ?users_Root = users_XML.DocumentElement;
                 if (users_XML != null)
                 {
                     foreach (XmlElement users_Node in users_Root)
@@ -100,11 +121,40 @@ namespace CoolStoreProject
                 throw new Exception();
             }
         }
+        //
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        // Commands
+        private RelayCommand ?startCommand;
+
+        /// <summary>
+        /// Start working with kiosk
+        /// </summary>
+        public RelayCommand? StartCommand
+        {
+            get
+            {
+                return startCommand ??
+                  (startCommand = new RelayCommand(obj =>
+                  {
+                      if (currentUser != null)
+                      {
+                          Controller.CurrentPage = Controller.UserPage_Actions;
+                      }
+                      else
+                      {
+                          WarningText = "*You haven't selected a user!";
+                      }
+                  }));
+            }
+        }
+        //
+
+        // INotifyPropertyChanged realization
+        public event PropertyChangedEventHandler? PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
+        //
     }
 }
