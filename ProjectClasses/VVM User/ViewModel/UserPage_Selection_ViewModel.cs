@@ -139,6 +139,7 @@ namespace CoolStoreProject.UserVVM
                       if (currentUser != null)
                       {
                           UserController.CurrentPage = UserController.UserPage_Actions;
+                          UserController.LaunchKiosk();
                       }
                       else
                       {

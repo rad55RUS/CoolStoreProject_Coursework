@@ -10,12 +10,12 @@ using System.Windows.Controls;
 namespace CoolStoreProject.KioskVVM
 {
     /// <summary>
-    /// Represents app controller
+    /// Represents kiosk controller
     /// </summary>
     internal class KioskController
     {
         // Fields
-        public static readonly Window_ViewModel Window_ViewModel = new();
+        public static readonly Window_ViewModel window_ViewModel = new();
         public static readonly KioskScanWaiting_Page_ViewModel kioskScanWaiting_Page_ViewModel = new();
         private static readonly KioskPage_ScanWaiting kioskScanWaiting_Page = new();
         private readonly KioskWindow kioskWindow;
@@ -28,20 +28,23 @@ namespace CoolStoreProject.KioskVVM
         }
         public static Page ?CurrentPage
         {
-            get => Window_ViewModel.CurrentPage;
+            get => window_ViewModel.CurrentPage;
             set
             {
-                Window_ViewModel.CurrentPage = value;
+                window_ViewModel.CurrentPage = value;
             }
         }
         //
 
+        // Constructors
         public KioskController(KioskWindow initial)
         {
             kioskWindow = initial;
-            kioskWindow.DataContext = Window_ViewModel;
+            kioskWindow.DataContext = window_ViewModel;
             kioskScanWaiting_Page.DataContext = kioskScanWaiting_Page_ViewModel;
             CurrentPage = kioskScanWaiting_Page;
+            kioskWindow.Show();
         }
+        //
     }
 }

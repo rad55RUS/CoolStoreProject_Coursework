@@ -7,19 +7,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
+using CoolStoreProject.KioskVVM;
+
 namespace CoolStoreProject.UserVVM
 {
     /// <summary>
-    /// Represents app controller
+    /// Represents user controller
     /// </summary>
     internal class UserController
     {
         // Fields
+        // Static
         public static readonly Window_ViewModel Window_ViewModel = new();
         public static readonly UserPage_Selection_ViewModel userPage_Selection_ViewModel = new();
         public static readonly UserPage_Actions_ViewModel userPage_Actions_ViewModel = new();
         private static readonly UserPage_Selection userPage_Selection = new();
         private static readonly UserPage_Actions userPage_Actions = new();
+        private static KioskController kioskController;
+        //
         private readonly UserWindow userWindow;
         //
 
@@ -50,6 +55,7 @@ namespace CoolStoreProject.UserVVM
         }
         //
 
+        // Constructors
         public UserController(UserWindow initial)
         {
             userWindow = initial;
@@ -58,5 +64,13 @@ namespace CoolStoreProject.UserVVM
             userPage_Actions.DataContext = userPage_Actions_ViewModel;
             CurrentPage = userPage_Selection;
         }
+        //
+
+        // Methods
+        public static void LaunchKiosk()
+        {
+            kioskController = new KioskController(new KioskWindow());
+        }
+        //
     }
 }

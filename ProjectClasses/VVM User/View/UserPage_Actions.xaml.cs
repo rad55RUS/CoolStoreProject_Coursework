@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CoolStoreProject.User
+namespace CoolStoreProject.UserVVM
 {
     /// <summary>
     /// Interaction logic for UserPage_Actions.xaml

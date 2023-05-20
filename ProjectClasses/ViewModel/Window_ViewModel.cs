@@ -16,11 +16,14 @@ namespace CoolStoreProject
 {
     internal class Window_ViewModel : INotifyPropertyChanged
     {
-        private Page ?currentPage;
+        // Fields
+        private int? left;
+        private int? top;
+        private Page? currentPage;
+        //
 
         // Properties
-        public Page ?CurrentPage
-        {
+        public Page? CurrentPage {
             get => currentPage;
             set
             {
@@ -28,6 +31,24 @@ namespace CoolStoreProject
                 OnPropertyChanged("CurrentPage");
             }
         }
+
+        public int? Left {
+            get => left;
+            set
+            {
+                left = value;
+                OnPropertyChanged("Left");
+            }
+        }
+        public int? Top { 
+            get => top;
+            set
+            {
+                top = value;
+                OnPropertyChanged("Top");
+            }
+        }
+
         //
 
         // Constructors
@@ -38,7 +59,7 @@ namespace CoolStoreProject
         //
 
         // INotifyPropertyChanged realization
-        public event PropertyChangedEventHandler ?PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
