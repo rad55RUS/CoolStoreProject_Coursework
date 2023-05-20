@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace CoolStoreProject.User
+namespace CoolStoreProject.UserVVM
 {
     internal class UserPage_Actions_ViewModel : INotifyPropertyChanged
     {

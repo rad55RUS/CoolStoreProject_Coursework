@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
-namespace CoolStoreProject.User
+namespace CoolStoreProject.UserVVM
 {
     /// <summary>
     /// Represents app controller

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Shapes;
 using System.Xml;
 
-namespace CoolStoreProject.User
+namespace CoolStoreProject.UserVVM
 {
     internal class UserPage_Selection_ViewModel : INotifyPropertyChanged
     {
