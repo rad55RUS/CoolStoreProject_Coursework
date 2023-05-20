@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CoolStoreProject"
         mc:Ignorable="d"
-        Title="CoolStore" Height="960" Width="540">
-    <Grid Margin="0,0,0,-37">
+        Title="CoolStore" Height="960" Width="540" WindowStyle="None">
+    <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 <LinearGradientBrush.RelativeTransform>

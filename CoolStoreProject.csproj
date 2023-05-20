@@ -61,4 +61,8 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ProjectClasses\ViewModel\KioskViewModel\" />
+  </ItemGroup>
+
 </Project>
