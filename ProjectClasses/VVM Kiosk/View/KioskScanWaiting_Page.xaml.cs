@@ -13,20 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CoolStoreProject
+namespace CoolStoreProject.ProjectClasses.View.KioskView
 {
     /// <summary>
-    /// Interaction logic for UserWindow.xaml
+    /// Логика взаимодействия для KioskScan_Page.xaml
     /// </summary>
-    public partial class UserWindow : Window
+    public partial class KioskScan_Page : Page
     {
-        private readonly Controller controller;
-
-        public UserWindow()
+        public KioskScan_Page()
         {
             InitializeComponent();
-
-            controller = new Controller(this);
         }
     }
 }

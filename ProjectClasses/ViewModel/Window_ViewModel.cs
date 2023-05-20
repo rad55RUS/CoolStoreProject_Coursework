@@ -14,7 +14,7 @@ using System.Xml;
 
 namespace CoolStoreProject
 {
-    internal class UserWindow_ViewModel : INotifyPropertyChanged
+    internal class Window_ViewModel : INotifyPropertyChanged
     {
         private Page ?currentPage;
 
@@ -31,7 +31,7 @@ namespace CoolStoreProject
         //
 
         // Constructors
-        public UserWindow_ViewModel()
+        public Window_ViewModel()
         {
 
         }

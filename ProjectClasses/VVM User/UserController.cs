@@ -12,10 +12,10 @@ namespace CoolStoreProject
     /// <summary>
     /// Represents app controller
     /// </summary>
-    internal class Controller
+    internal class UserController
     {
         // Fields
-        public static readonly UserWindow_ViewModel userWindow_ViewModel = new();
+        public static readonly Window_ViewModel userWindow_ViewModel = new();
         public static readonly UserPage_Selection_ViewModel userPage_Selection_ViewModel = new();
         public static readonly UserPage_Actions_ViewModel userPage_Actions_ViewModel = new();
         private static readonly UserPage_Selection userPage_Selection = new();
@@ -32,7 +32,7 @@ namespace CoolStoreProject
         {
             get => userPage_Actions;
         }
-        public static User CurrentUser
+        public static User ?CurrentUser
         {
             get => userPage_Selection_ViewModel.CurrentUser;
             set
@@ -40,7 +40,7 @@ namespace CoolStoreProject
                 userPage_Selection_ViewModel.CurrentUser = value;
             }
         }
-        public static Page CurrentPage
+        public static Page ?CurrentPage
         {
             get => userWindow_ViewModel.CurrentPage;
             set
@@ -50,7 +50,7 @@ namespace CoolStoreProject
         }
         //
 
-        public Controller(UserWindow initial)
+        public UserController(UserWindow initial)
         {
             userWindow = initial;
             userWindow.DataContext = userWindow_ViewModel;

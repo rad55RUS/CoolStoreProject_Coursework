@@ -1,0 +1,16 @@
+﻿<Page x:Class="CoolStoreProject.ProjectClasses.View.KioskView.KioskScan_Page"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CoolStoreProject.ProjectClasses.View.KioskView"
+      mc:Ignorable="d"
+      Title="KioskScan_Page" Width="540" Height="960">
+    <Grid Width="540">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="67*"/>
+            <RowDefinition Height="93*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Отсканируйте продукт, чтобы начать" HorizontalAlignment="Center" Height="183" VerticalAlignment="Top" Width="468" FontFamily="Nirmala UI" FontSize="36" FontWeight="Bold" Foreground="White" TextWrapping="Wrap" TextAlignment="Center" Margin="0,11,0,0" Grid.Row="1"/>
+    </Grid>
+</Page>

@@ -138,7 +138,7 @@ namespace CoolStoreProject
                   {
                       if (currentUser != null)
                       {
-                          Controller.CurrentPage = Controller.UserPage_Actions;
+                          UserController.CurrentPage = UserController.UserPage_Actions;
                       }
                       else
                       {

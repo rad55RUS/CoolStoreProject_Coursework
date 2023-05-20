@@ -21,6 +21,6 @@
                 <GradientStop Color="#FF1C77F1" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <TextBlock Text="Отсканируйте продукт, чтобы начать" HorizontalAlignment="Center" Height="183" VerticalAlignment="Top" Width="468" FontFamily="Nirmala UI" FontSize="36" FontWeight="Bold" Foreground="White" TextWrapping="Wrap" TextAlignment="Center" Margin="0,413,0,0"/>
+        <Frame x:Name="PagesContainer_Frame" Content="{Binding CurrentPage}" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>
