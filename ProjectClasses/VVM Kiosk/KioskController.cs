@@ -16,8 +16,9 @@ namespace CoolStoreProject.KioskVVM
     {
         // Fields
         public static readonly Window_ViewModel window_ViewModel = new();
-        public static readonly KioskScanWaiting_Page_ViewModel kioskScanWaiting_Page_ViewModel = new();
+        public static readonly KioskPage_Main_ViewModel kioskPage_Main_ViewModel = new();
         private static readonly KioskPage_ScanWaiting kioskScanWaiting_Page = new();
+        private static readonly KioskPage_Main kioskPage_Main = new();
         private readonly KioskWindow kioskWindow;
         //
 
@@ -41,9 +42,17 @@ namespace CoolStoreProject.KioskVVM
         {
             kioskWindow = initial;
             kioskWindow.DataContext = window_ViewModel;
-            kioskScanWaiting_Page.DataContext = kioskScanWaiting_Page_ViewModel;
+            kioskPage_Main.DataContext = kioskPage_Main_ViewModel;
             CurrentPage = kioskScanWaiting_Page;
             kioskWindow.Show();
+        }
+        //
+
+        // Methods
+        public static void ScanProduct(Product scannedProduct)
+        {
+            window_ViewModel.CurrentPage = kioskPage_Main;
+            kioskPage_Main_ViewModel.CurrentPicture = scannedProduct.ImagePath;
         }
         //
     }

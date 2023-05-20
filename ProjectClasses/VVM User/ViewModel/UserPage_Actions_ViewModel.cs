@@ -15,6 +15,7 @@ namespace CoolStoreProject.UserVVM
     {
         // Fields
         private Product? currentProduct;
+        private string warningText;
         //
 
         // Properties
@@ -26,6 +27,15 @@ namespace CoolStoreProject.UserVVM
             {
                 currentProduct = value;
                 OnPropertyChanged("CurrentProduct");
+            }
+        }
+        public string? WarningText
+        {
+            get => warningText;
+            set
+            {
+                warningText = value;
+                OnPropertyChanged("WarningText");
             }
         }
         //
@@ -71,7 +81,7 @@ namespace CoolStoreProject.UserVVM
                             }
                             if (product_Node.Name == "ImagePath")
                             {
-                                imagePath = product_Node.InnerText;
+                                imagePath = Environment.CurrentDirectory + @product_Node.InnerText;
                             }
                             if (product_Node.Name == "Price")
                             {
@@ -117,6 +127,32 @@ namespace CoolStoreProject.UserVVM
             catch (Exception ex)
             {
                 throw new Exception();
+            }
+        }
+        //
+
+        // Commands
+        private RelayCommand? scanCommand;
+
+        /// <summary>
+        /// Start working with kiosk
+        /// </summary>
+        public RelayCommand? ScanCommand
+        {
+            get
+            {
+                return scanCommand ??
+                  (scanCommand = new RelayCommand(obj =>
+                  {
+                      if (currentProduct != null)
+                      {
+                          UserController.ScanProduct();
+                      }
+                      else
+                      {
+                          WarningText = "*You haven't selected a product!";
+                      }
+                  }));
             }
         }
         //

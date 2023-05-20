@@ -1,0 +1,18 @@
+﻿<Page x:Class="CoolStoreProject.KioskVVM.KioskPage_Main"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CoolStoreProject.KioskVVM"
+      mc:Ignorable="d"
+      Title="KioskScan_Page" Width="540" Height="960">
+    <Grid Width="540">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="67*"/>
+            <RowDefinition Height="93*"/>
+        </Grid.RowDefinitions>
+        <Grid Margin="35,38,249,108" Width="256" Height="256" Background="White">
+            <Image HorizontalAlignment="Center" Height="256" VerticalAlignment="Center" Width="256" Source="{Binding CurrentPicture}"/>
+        </Grid>
+    </Grid>
+</Page>

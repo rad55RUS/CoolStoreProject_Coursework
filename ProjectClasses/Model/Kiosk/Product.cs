@@ -21,7 +21,7 @@ namespace CoolStoreProject
         //
         private int id;
         private string name;
-        private BitmapImage image;
+        private string imagePath;
         private double price;
         private bool isWeighable;
         private int weight;
@@ -38,9 +38,9 @@ namespace CoolStoreProject
             get => name;
             set => name = value; 
         }
-        public BitmapImage Image {
-            get => image; 
-            set => image = value; 
+        public string ImagePath {
+            get => imagePath; 
+            set => imagePath = value; 
         }
         public double Price { 
             get => price; 
@@ -91,7 +91,7 @@ namespace CoolStoreProject
 
             this.id = amount;
             this.name = name;
-            this.image = new BitmapImage(new(@imagePath, UriKind.RelativeOrAbsolute));
+            this.imagePath = imagePath;
             this.price = price;
             this.isWeighable = isWeighable;
             this.weight = weight;
@@ -103,7 +103,7 @@ namespace CoolStoreProject
 
             this.id = amount;
             this.name = name;
-            this.image = new BitmapImage(new(@imagePath, UriKind.RelativeOrAbsolute));
+            this.imagePath = imagePath;
             this.price = price;
             this.isWeighable = false;
             this.volume = volume;

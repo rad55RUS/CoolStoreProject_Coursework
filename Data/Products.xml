@@ -3,79 +3,79 @@
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:noNamespaceSchemaLocation="Schemas\Products_Schema.xsd">
 	<Product>
-		<Name>"Бананы"</Name>
-		<ImagePath>"/Data/Images/Бананы.png"</ImagePath>
+		<Name>Бананы</Name>
+		<ImagePath>/Data/Images/Бананы.png</ImagePath>
 		<Price>137</Price>
 		<IsWeighable>True</IsWeighable>
 		<Weight>1000</Weight>
 		<!--Some other product data-->
 	</Product>
 	<Product>
-		<Name>"Кефир Простоквашино 3,2%"</Name>
-		<ImagePath>"/Data/Images/Кефир Простоквашино 3,2%.png"</ImagePath>
+		<Name>Кефир Простоквашино 3,2%</Name>
+		<ImagePath>/Data/Images/Кефир Простоквашино 3,2%.png</ImagePath>
 		<Price>90</Price>
 		<Volume>930</Volume>
 		<!--Some other product data-->
 	</Product>
 	<Product>
-		<Name>"Яблоки Гольден"</Name>
-		<ImagePath>"/Data/Images/Яблоки Гольден.png"</ImagePath>
+		<Name>Яблоки Гольден</Name>
+		<ImagePath>/Data/Images/Яблоки Гольден.png</ImagePath>
 		<Price>110</Price>
 		<IsWeighable>True</IsWeighable>
 		<Weight>1000</Weight>
 		<!--Some other product data-->
 	</Product>
 	<Product>
-		<Name>"Шоколадный батончик Snickers Super"</Name>
-		<ImagePath>"/Data/Images/Шоколадный батончик Snickers Super.png"</ImagePath>
+		<Name>Шоколадный батончик Snickers Super</Name>
+		<ImagePath>/Data/Images/Шоколадный батончик Snickers Super.png</ImagePath>
 		<Price>80</Price>
 		<IsWeighable>False</IsWeighable>
 		<Weight>80</Weight>
 		<!--Some other product data-->
 	</Product>
 	<Product>
-		<Name>"Батон Нарезной Московский ТМ Хлебный дом"</Name>
-		<ImagePath>"/Data/Images/Батон Нарезной Московский ТМ Хлебный дом.png"</ImagePath>
+		<Name>Батон Нарезной Московский ТМ Хлебный дом</Name>
+		<ImagePath>/Data/Images/Батон Нарезной Московский ТМ Хлебный дом.png</ImagePath>
 		<Price>36</Price>
 		<IsWeighable>False</IsWeighable>
 		<Weight>350</Weight>
 		<!--Some other product data-->
 	</Product>
 	<Product>
-		<Name>"Стейк говяжий Праймбиф Минутка без кости категория А охлаждённый, 400г"</Name>
-		<ImagePath>"/Data/Images/Стейк говяжий Праймбиф Минутка без кости категория А охлаждённый, 400г.png"</ImagePath>
+		<Name>Стейк говяжий Праймбиф Минутка без кости категория А охлаждённый, 400г</Name>
+		<ImagePath>/Data/Images/Стейк говяжий Праймбиф Минутка без кости категория А охлаждённый, 400г.png</ImagePath>
 		<Price>600</Price>
 		<IsWeighable>False</IsWeighable>
 		<Weight>400</Weight>
 		<!--Some other product data-->
 	</Product>
 	<Product>
-		<Name>"Драже Nattys Crush Peanut c арахисом в арахисовой пасте и какао"</Name>
-		<ImagePath>"/Data/Images/Драже Nattys Crush Peanut c арахисом в арахисовой пасте и какао.png"</ImagePath>
+		<Name>Драже Nattys Crush Peanut c арахисом в арахисовой пасте и какао</Name>
+		<ImagePath>/Data/Images/Драже Nattys Crush Peanut c арахисом в арахисовой пасте и какао.png</ImagePath>
 		<Price>300</Price>
 		<IsWeighable>False</IsWeighable>
 		<Weight>80</Weight>
 		<!--Some other product data-->
 	</Product>
 	<Product>
-		<Name>"Шоколад молочный с медово-миндальной нугой ТМ Toblerone"</Name>
-		<ImagePath>"/Data/Images/Шоколад молочный с медово-миндальной нугой ТМ Toblerone.png"</ImagePath>
+		<Name>Шоколад молочный с медово-миндальной нугой ТМ Toblerone</Name>
+		<ImagePath>/Data/Images/Шоколад молочный с медово-миндальной нугой ТМ Toblerone.png</ImagePath>
 		<Price>380</Price>
 		<IsWeighable>False</IsWeighable>
 		<Weight>100</Weight>
 		<!--Some other product data-->
 	</Product>
 	<Product>
-		<Name>"Лапша быстрого приготовления 'Доширак' со вкусом курицы"</Name>
-		<ImagePath>"/Data/Images/Лапша быстрого приготовления Доширак со вкусом курицы.png"</ImagePath>
+		<Name>Лапша быстрого приготовления 'Доширак' со вкусом курицы</Name>
+		<ImagePath>/Data/Images/Лапша быстрого приготовления Доширак со вкусом курицы.png</ImagePath>
 		<Price>72</Price>
 		<IsWeighable>False</IsWeighable>
 		<Weight>90</Weight>
 		<!--Some other product data-->
 	</Product>
 	<Product>
-		<Name>"Пиво Светлое Tuborg Green"</Name>
-		<ImagePath>"/Data/Images/Пиво Светлое Tuborg Green.png"</ImagePath>
+		<Name>Пиво Светлое Tuborg Green</Name>
+		<ImagePath>/Data/Images/Пиво Светлое Tuborg Green.png</ImagePath>
 		<Price>64</Price>
 		<Volume>450</Volume>
 		<!--Some other product data-->

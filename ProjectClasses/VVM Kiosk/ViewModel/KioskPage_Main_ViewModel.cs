@@ -1,34 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Controls;
 
 namespace CoolStoreProject.KioskVVM
 {
-    internal class KioskWindow_ViewModel : INotifyPropertyChanged
+    internal class KioskPage_Main_ViewModel : INotifyPropertyChanged
     {
-        private Page? currentPage;
-
-        // Properties
-        public Page? CurrentPage
-        {
-            get => currentPage;
-            set
-            {
-                currentPage = value;
-                OnPropertyChanged("CurrentPage");
-            }
-        }
+        // Fields
+        private string? currentPicture;
         //
 
-        // Constructors
-        public KioskWindow_ViewModel()
+        // Properties
+        public string? CurrentPicture
         {
-
+            get => currentPicture;
+            set
+            {
+                currentPicture = value;
+                OnPropertyChanged("CurrentPicture");
+            }
         }
         //
 

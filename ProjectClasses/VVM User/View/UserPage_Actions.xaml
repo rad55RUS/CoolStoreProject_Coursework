@@ -5,10 +5,10 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CoolStoreProject.UserVVM"
       mc:Ignorable="d"
-      Title="User Actions" Width="458" Height="414">
+      Title="User Actions" Width="458" Height="444">
 
     <Grid Background="White" Width="458" Height="450">
-        <ListBox ItemsSource="{Binding Products}" SelectedItem="{Binding CurrentProduct}" Margin="0,68,0,112">
+        <ListBox ItemsSource="{Binding Products}" SelectedItem="{Binding CurrentProduct}" Margin="0,68,0,102">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="5">
@@ -19,9 +19,10 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button Content="Scan" HorizontalAlignment="Left" Height="33" Margin="10,362,0,0" VerticalAlignment="Top" Width="121" Style="{StaticResource CommonButton}"/>
+        <Button Content="Scan" HorizontalAlignment="Left" Height="33" Margin="18,395,0,0" VerticalAlignment="Top" Width="121" Style="{StaticResource CommonButton}" Command="{Binding ScanCommand}"/>
         <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Width="438" FontSize="16" TextAlignment="Center" Background="#FFF9FCFF" Foreground="Black" Margin="0,14,0,0"><Run Text="Select a product from the list and press button to scan it."/><LineBreak/><Run Text="Press finish when you'll have done"/><LineBreak/><Run/></TextBlock>
-        <Button Content="Weigh" HorizontalAlignment="Left" Height="33" Margin="154,362,0,0" VerticalAlignment="Top" Width="121" Style="{StaticResource CommonButton}"/>
-        <Button Content="Finish" HorizontalAlignment="Left" Height="33" VerticalAlignment="Top" Width="93" Margin="355,362,0,0" Style="{StaticResource FinishButton}"/>
+        <Button Content="Weigh" HorizontalAlignment="Left" Height="33" Margin="159,395,0,0" VerticalAlignment="Top" Width="121" Style="{StaticResource CommonButton}"/>
+        <Button Content="Finish" HorizontalAlignment="Left" Height="33" VerticalAlignment="Top" Width="93" Margin="353,395,0,0" Style="{StaticResource FinishButton}"/>
+        <Label Content="{Binding WarningText}" HorizontalAlignment="Center" Height="31" Margin="0,348,0,0" VerticalAlignment="Top" Width="458" Background="#00000000" Foreground="#FFBB1111"/>
     </Grid>
 </Page>

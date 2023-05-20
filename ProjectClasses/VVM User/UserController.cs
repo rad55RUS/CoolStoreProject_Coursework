@@ -37,6 +37,14 @@ namespace CoolStoreProject.UserVVM
         {
             get => userPage_Actions;
         }
+        public static Product? CurrentProduct
+        {
+            get => userPage_Actions_ViewModel.CurrentProduct;
+            set
+            {
+                userPage_Actions_ViewModel.CurrentProduct = value;
+            }
+        }
         public static User ?CurrentUser
         {
             get => userPage_Selection_ViewModel.CurrentUser;
@@ -67,9 +75,20 @@ namespace CoolStoreProject.UserVVM
         //
 
         // Methods
+        /// <summary>
+        /// Launch kiosk app
+        /// </summary>
         public static void LaunchKiosk()
         {
             kioskController = new KioskController(new KioskWindow());
+        }
+
+        /// <summary>
+        /// Send scanned product info to kiosk
+        /// </summary>
+        public static void ScanProduct()
+        {
+            KioskController.ScanProduct(CurrentProduct);
         }
         //
     }
