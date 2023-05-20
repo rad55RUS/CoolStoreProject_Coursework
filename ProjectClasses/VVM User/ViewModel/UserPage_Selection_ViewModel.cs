@@ -140,6 +140,7 @@ namespace CoolStoreProject.UserVVM
                       {
                           UserController.CurrentPage = UserController.UserPage_Actions;
                           UserController.LaunchKiosk();
+                          WarningText = "";
                       }
                       else
                       {
