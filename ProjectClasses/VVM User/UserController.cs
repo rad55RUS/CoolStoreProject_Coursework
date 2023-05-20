@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
-namespace CoolStoreProject
+namespace CoolStoreProject.User
 {
     /// <summary>
     /// Represents app controller
@@ -15,7 +15,7 @@ namespace CoolStoreProject
     internal class UserController
     {
         // Fields
-        public static readonly Window_ViewModel userWindow_ViewModel = new();
+        public static readonly Window_ViewModel Window_ViewModel = new();
         public static readonly UserPage_Selection_ViewModel userPage_Selection_ViewModel = new();
         public static readonly UserPage_Actions_ViewModel userPage_Actions_ViewModel = new();
         private static readonly UserPage_Selection userPage_Selection = new();
@@ -42,10 +42,10 @@ namespace CoolStoreProject
         }
         public static Page ?CurrentPage
         {
-            get => userWindow_ViewModel.CurrentPage;
+            get => Window_ViewModel.CurrentPage;
             set
             {
-                userWindow_ViewModel.CurrentPage = value;
+                Window_ViewModel.CurrentPage = value;
             }
         }
         //
@@ -53,7 +53,7 @@ namespace CoolStoreProject
         public UserController(UserWindow initial)
         {
             userWindow = initial;
-            userWindow.DataContext = userWindow_ViewModel;
+            userWindow.DataContext = Window_ViewModel;
             userPage_Selection.DataContext = userPage_Selection_ViewModel;
             userPage_Actions.DataContext = userPage_Actions_ViewModel;
             CurrentPage = userPage_Selection;

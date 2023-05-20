@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace CoolStoreProject
+namespace CoolStoreProject.User
 {
     /// <summary>
     /// Interaction logic for UserPage_Selection.xaml

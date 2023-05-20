@@ -7,9 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
-namespace CoolStoreProject.ProjectClasses.ViewModel.KioskViewModel
+namespace CoolStoreProject.KioskVVM
 {
-    internal class KioskWindow_ViewModel
+    internal class KioskWindow_ViewModel : INotifyPropertyChanged
     {
         private Page? currentPage;
 

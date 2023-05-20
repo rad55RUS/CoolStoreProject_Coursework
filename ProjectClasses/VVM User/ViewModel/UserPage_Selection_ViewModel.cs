@@ -11,12 +11,12 @@ using System.Threading.Tasks;
 using System.Windows.Shapes;
 using System.Xml;
 
-namespace CoolStoreProject
+namespace CoolStoreProject.User
 {
     internal class UserPage_Selection_ViewModel : INotifyPropertyChanged
     {
         // Fields
-        private User ?currentUser;
+        private User currentUser;
         private string warningText;
         //
 

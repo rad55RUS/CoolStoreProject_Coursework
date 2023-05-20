@@ -1,9 +1,9 @@
-﻿<Page x:Class="CoolStoreProject.UserPage_Actions"
+﻿<Page x:Class="CoolStoreProject.User.UserPage_Actions"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:CoolStoreProject"
+      xmlns:local="clr-namespace:CoolStoreProject.User"
       mc:Ignorable="d"
       Title="User Actions" Width="458" Height="414">
 

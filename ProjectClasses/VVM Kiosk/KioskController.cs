@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
-namespace CoolStoreProject
+namespace CoolStoreProject.KioskVVM
 {
     /// <summary>
     /// Represents app controller
@@ -15,48 +15,33 @@ namespace CoolStoreProject
     internal class KioskController
     {
         // Fields
-        public static readonly Window_ViewModel userWindow_ViewModel = new();
-        public static readonly UserPage_Selection_ViewModel userPage_Selection_ViewModel = new();
-        public static readonly UserPage_Actions_ViewModel userPage_Actions_ViewModel = new();
-        private static readonly UserPage_Selection userPage_Selection = new();
-        private static readonly UserPage_Actions userPage_Actions = new();
-        private readonly UserWindow userWindow;
+        public static readonly Window_ViewModel Window_ViewModel = new();
+        public static readonly KioskScanWaiting_Page_ViewModel kioskScanWaiting_Page_ViewModel = new();
+        private static readonly KioskPage_ScanWaiting kioskScanWaiting_Page = new();
+        private readonly KioskWindow kioskWindow;
         //
 
         // Properties
-        public static UserPage_Selection UserPage_Selection
+        public static KioskPage_ScanWaiting KioskPage_ScanWaiting
         {
-            get => userPage_Selection;
-        }
-        public static UserPage_Actions UserPage_Actions
-        {
-            get => userPage_Actions;
-        }
-        public static User ?CurrentUser
-        {
-            get => userPage_Selection_ViewModel.CurrentUser;
-            set
-            {
-                userPage_Selection_ViewModel.CurrentUser = value;
-            }
+            get => kioskScanWaiting_Page;
         }
         public static Page ?CurrentPage
         {
-            get => userWindow_ViewModel.CurrentPage;
+            get => Window_ViewModel.CurrentPage;
             set
             {
-                userWindow_ViewModel.CurrentPage = value;
+                Window_ViewModel.CurrentPage = value;
             }
         }
         //
 
-        public KioskController(UserWindow initial)
+        public KioskController(KioskWindow initial)
         {
-            userWindow = initial;
-            userWindow.DataContext = userWindow_ViewModel;
-            userPage_Selection.DataContext = userPage_Selection_ViewModel;
-            userPage_Actions.DataContext = userPage_Actions_ViewModel;
-            CurrentPage = userPage_Selection;
+            kioskWindow = initial;
+            kioskWindow.DataContext = Window_ViewModel;
+            kioskScanWaiting_Page.DataContext = kioskScanWaiting_Page_ViewModel;
+            CurrentPage = kioskScanWaiting_Page;
         }
     }
 }

@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CoolStoreProject.ProjectClasses.View.KioskView
+namespace CoolStoreProject.KioskVVM
 {
     /// <summary>
     /// Логика взаимодействия для KioskScan_Page.xaml
     /// </summary>
-    public partial class KioskScan_Page : Page
+    public partial class KioskPage_ScanWaiting : Page
     {
-        public KioskScan_Page()
+        public KioskPage_ScanWaiting()
         {
             InitializeComponent();
         }

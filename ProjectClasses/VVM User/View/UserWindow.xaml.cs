@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CoolStoreProject
+namespace CoolStoreProject.User
 {
     /// <summary>
     /// Interaction logic for UserWindow.xaml

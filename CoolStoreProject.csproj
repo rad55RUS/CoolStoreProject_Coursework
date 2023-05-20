@@ -10,10 +10,6 @@
   <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
 
   <ItemGroup>
-    <None Remove="ProjectClasses\View\UserActions_Icon.png" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="Data\BonusCards.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
