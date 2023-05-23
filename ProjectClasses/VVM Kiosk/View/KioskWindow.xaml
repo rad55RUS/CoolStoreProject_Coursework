@@ -13,7 +13,7 @@
                     <TransformGroup>
                         <ScaleTransform CenterY="0.5" CenterX="0.5"/>
                         <SkewTransform CenterX="0.5" CenterY="0.5"/>
-                        <RotateTransform Angle="88" CenterX="0.5" CenterY="0.5"/>
+                        <RotateTransform Angle="90" CenterX="0.5" CenterY="0.5"/>
                         <TranslateTransform/>
                     </TransformGroup>
                 </LinearGradientBrush.RelativeTransform>

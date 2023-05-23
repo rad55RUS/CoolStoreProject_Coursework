@@ -49,37 +49,23 @@ namespace CoolStoreProject.KioskVVM
         //
 
         // Methods
+        /// <summary>
+        /// Open main kiosk page if not opened and call ScanProduct method from main page view model
+        /// </summary>
+        /// <param name="scannedProduct"></param>
+        public static void ScanProduct(int weight)
+        {
+            kioskPage_Main_ViewModel.WeighProduct(weight);
+        }
+
+        /// <summary>
+        /// Open main kiosk page if not opened and call ScanProduct method from main page view model
+        /// </summary>
+        /// <param name="scannedProduct"></param>
         public static void ScanProduct(Product scannedProduct)
         {
-            string displayedWeightVolumeString;
-            if (scannedProduct.Weight > 0)
-            {
-                if (scannedProduct.Weight >= 1000)
-                {
-                    displayedWeightVolumeString = Convert.ToString(Math.Round(Convert.ToDouble(scannedProduct.Weight / 1000), 2)) + " кг";
-                }
-                else
-                {
-                    displayedWeightVolumeString = Convert.ToString(scannedProduct.Weight) + " г";
-                }
-            }
-            else
-            {
-                if (scannedProduct.Volume >= 1000)
-                {
-                    displayedWeightVolumeString = Convert.ToString(Math.Round(Convert.ToDouble(scannedProduct.Volume / 1000), 2)) + " л";
-                }
-                else
-                {
-                    displayedWeightVolumeString = Convert.ToString(scannedProduct.Volume) + " мл";
-                }
-            }
             window_ViewModel.CurrentPage = kioskPage_Main;
-
-            kioskPage_Main_ViewModel.CurrentPicture = scannedProduct.ImagePath;
-            kioskPage_Main_ViewModel.ProductName = scannedProduct.Name;
-            kioskPage_Main_ViewModel.ProductWeight = displayedWeightVolumeString;
-            kioskPage_Main_ViewModel.ProductPrice = Convert.ToString(Math.Round(scannedProduct.Price,2)) + "₽";
+            kioskPage_Main_ViewModel.ScanProduct(scannedProduct);
         }
         //
     }

@@ -23,7 +23,7 @@ namespace CoolStoreProject.UserVVM
         public static readonly UserPage_Actions_ViewModel userPage_Actions_ViewModel = new();
         private static readonly UserPage_Selection userPage_Selection = new();
         private static readonly UserPage_Actions userPage_Actions = new();
-        private static KioskController kioskController;
+        private static KioskController ?kioskController;
         //
         private readonly UserWindow userWindow;
         //
@@ -43,6 +43,14 @@ namespace CoolStoreProject.UserVVM
             set
             {
                 userPage_Actions_ViewModel.CurrentProduct = value;
+            }
+        }
+        public static string InputWeight
+        {
+            get => userPage_Actions_ViewModel.InputWeight;
+            set
+            {
+                userPage_Actions_ViewModel.InputWeight = value;
             }
         }
         public static User ?CurrentUser
@@ -81,6 +89,14 @@ namespace CoolStoreProject.UserVVM
         public static void LaunchKiosk()
         {
             kioskController = new KioskController(new KioskWindow());
+        }
+
+        /// <summary>
+        /// Send weighing result to kiosk
+        /// </summary>
+        public static void WeighProduct()
+        {
+            KioskController.ScanProduct(Convert.ToInt32(InputWeight));
         }
 
         /// <summary>

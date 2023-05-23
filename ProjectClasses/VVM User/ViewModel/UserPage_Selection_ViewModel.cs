@@ -16,12 +16,19 @@ namespace CoolStoreProject.UserVVM
     internal class UserPage_Selection_ViewModel : INotifyPropertyChanged
     {
         // Fields
-        private User currentUser;
-        private string warningText;
+        private User ?currentUser;
+        private string? warningText;
         //
 
         // Properties
+        /// <summary>
+        /// Represents collection displaying in user list box
+        /// </summary>
         public ObservableCollection<User> ?Users { get; set; }
+
+        /// <summary>
+        /// Represents current user selected in user list box
+        /// </summary>
         public User ?CurrentUser {
             get => currentUser;
             set
@@ -30,6 +37,10 @@ namespace CoolStoreProject.UserVVM
                 OnPropertyChanged("CurrentUser");
             }
         }
+
+        /// <summary>
+        /// Represents displaying warning text
+        /// </summary>
         public string ?WarningText
         {
             get => warningText;

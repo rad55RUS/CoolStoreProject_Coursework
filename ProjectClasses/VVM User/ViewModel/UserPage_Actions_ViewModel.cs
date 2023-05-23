@@ -15,11 +15,19 @@ namespace CoolStoreProject.UserVVM
     {
         // Fields
         private Product? currentProduct;
-        private string warningText;
+        private string? warningText;
+        private string inputWeight = "0";
         //
 
         // Properties
+        /// <summary>
+        /// Represents collection displaying in products list box
+        /// </summary>
         public ObservableCollection<Product>? Products { get; set; }
+
+        /// <summary>
+        /// Represents current selected product in products list box
+        /// </summary>
         public Product? CurrentProduct
         {
             get => currentProduct;
@@ -29,6 +37,10 @@ namespace CoolStoreProject.UserVVM
                 OnPropertyChanged("CurrentProduct");
             }
         }
+
+        /// <summary>
+        /// Represents displaying warning text
+        /// </summary>
         public string? WarningText
         {
             get => warningText;
@@ -36,6 +48,19 @@ namespace CoolStoreProject.UserVVM
             {
                 warningText = value;
                 OnPropertyChanged("WarningText");
+            }
+        }
+
+        /// <summary>
+        /// Represents weight inputting by user
+        /// </summary>
+        public string InputWeight
+        {
+            get => inputWeight;
+            set
+            {
+                inputWeight = value;
+                OnPropertyChanged("InputWeight");
             }
         }
         //
@@ -132,10 +157,35 @@ namespace CoolStoreProject.UserVVM
         //
 
         // Commands
+        private RelayCommand? weighCommand;
+
+        /// <summary>
+        /// Imitate product weighing and send it's result to the kiosk via control
+        /// </summary>
+        public RelayCommand? WeighCommand
+        {
+            get
+            {
+                return weighCommand ??
+                  (weighCommand = new RelayCommand(obj =>
+                  {
+                      if (InputWeight != "0" || InputWeight != "")
+                      {
+                          UserController.WeighProduct();
+                          WarningText = "";
+                      }
+                      else
+                      {
+                          WarningText = "*You've inputted incorrect weight!";
+                      }
+                  }));
+            }
+        }
+
         private RelayCommand? scanCommand;
 
         /// <summary>
-        /// Start working with kiosk
+        /// Imitate product scanning and send it's info to the kiosk via control
         /// </summary>
         public RelayCommand? ScanCommand
         {
