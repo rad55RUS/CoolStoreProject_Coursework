@@ -30,31 +30,39 @@ namespace CoolStoreProject
 
         // Properties
         // Data
-        public int Id {
+        public int Id
+        {
             get => id;
             set => id = value;
         }
-        public string Name { 
+        public string Name
+        {
             get => name;
-            set => name = value; 
+            set => name = value;
         }
-        public string ImagePath {
-            get => imagePath; 
-            set => imagePath = value; 
+        public string ImagePath
+        {
+            get => imagePath;
+            set => imagePath = value;
         }
-        public double Price { 
-            get => price; 
+        public double Price
+        {
+            get => price;
             set => price = value;
         }
-        public bool IsWeighable {
-            get => isWeighable; 
-            set => isWeighable = value; }
-        public int Weight {
-            get => weight; 
-            set => weight = value; 
+        public bool IsWeighable
+        {
+            get => isWeighable;
+            set => isWeighable = value;
         }
-        public int Volume {
-            get => volume; 
+        public int Weight
+        {
+            get => weight;
+            set => weight = value;
+        }
+        public int Volume
+        {
+            get => volume;
             set => volume = value;
         }
         //
@@ -89,7 +97,7 @@ namespace CoolStoreProject
         {
             amount++;
 
-            this.id = amount;
+            id = amount;
             this.name = name;
             this.imagePath = imagePath;
             this.price = price;
@@ -101,11 +109,11 @@ namespace CoolStoreProject
         {
             amount++;
 
-            this.id = amount;
+            id = amount;
             this.name = name;
             this.imagePath = imagePath;
             this.price = price;
-            this.isWeighable = false;
+            isWeighable = false;
             this.volume = volume;
         }
         //

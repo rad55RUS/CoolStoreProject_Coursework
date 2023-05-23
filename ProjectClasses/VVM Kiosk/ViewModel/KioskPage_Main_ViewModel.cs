@@ -106,6 +106,13 @@ namespace CoolStoreProject.KioskVVM
         }
         //
 
+        // Constructors
+        public KioskPage_Main_ViewModel()
+        {
+            BasketContent = new ObservableCollection<string>();
+        }
+        //
+
         // Methods
         /// <summary>
         /// Show weighing result info and add it to the basket
@@ -178,6 +185,7 @@ namespace CoolStoreProject.KioskVVM
                 {
                     ClientExtraInfo = "Продукт был добавлен в корзину. Вы можете отсканировать следующий продукт, убрать лишние продукты из корзины или перейти к оплате.";
                     weighableProductPrice = null;
+                    BasketContent.Add(ProductName);
                 }
             }
         }
