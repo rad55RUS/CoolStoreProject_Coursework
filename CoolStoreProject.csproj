@@ -41,7 +41,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Data\Images\Шоколад молочный с медово-миндальной нугой ТМ Toblerone.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Data\Images\Шоколадный батончик Snickers Super.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

@@ -11,8 +11,13 @@
             <RowDefinition Height="67*"/>
             <RowDefinition Height="93*"/>
         </Grid.RowDefinitions>
-        <Grid Margin="35,38,249,108" Width="256" Height="256" Background="White">
-            <Image HorizontalAlignment="Center" Height="256" VerticalAlignment="Center" Width="256" Source="{Binding CurrentPicture}"/>
+        <Grid HorizontalAlignment="Center" Height="918" VerticalAlignment="Center" Width="502" Grid.RowSpan="2" Background="White">
+            <Grid Margin="0,0,246,662" Width="256" Height="256" Background="White">
+                <Image HorizontalAlignment="Center" Height="256" VerticalAlignment="Center" Width="256" Source="{Binding CurrentPicture}"/>
+            </Grid>
+            <TextBlock HorizontalAlignment="Left" Height="173" Margin="261,10,0,0" TextWrapping="Wrap" Text="{Binding ProductName}"  VerticalAlignment="Top" Width="241" FontFamily="Nirmala UI" FontSize="22" FontWeight="Bold"/>
+            <TextBlock HorizontalAlignment="Left" Height="37" Margin="261,183,0,0" TextWrapping="Wrap" Text="{Binding ProductWeight}"  VerticalAlignment="Top" Width="241" FontFamily="Nirmala UI" FontSize="18" Foreground="#FF272727"/>
+            <TextBlock HorizontalAlignment="Left" Height="36" Margin="261,220,0,0" TextWrapping="Wrap" Text="{Binding ProductPrice}"  VerticalAlignment="Top" Width="241" FontFamily="Nirmala UI" FontSize="22" Foreground="Black" FontWeight="Bold"/>
         </Grid>
     </Grid>
 </Page>

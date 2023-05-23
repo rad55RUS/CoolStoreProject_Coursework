@@ -13,6 +13,9 @@ namespace CoolStoreProject.KioskVVM
     {
         // Fields
         private string? currentPicture;
+        private string? productName;
+        private string? productWeight;
+        private string? productPrice;
         //
 
         // Properties
@@ -23,6 +26,33 @@ namespace CoolStoreProject.KioskVVM
             {
                 currentPicture = value;
                 OnPropertyChanged("CurrentPicture");
+            }
+        }
+        public string? ProductName
+        {
+            get => productName;
+            set
+            {
+                productName = value;
+                OnPropertyChanged("ProductName");
+            }
+        }
+        public string? ProductWeight
+        {
+            get => productWeight;
+            set
+            {
+                productWeight = value;
+                OnPropertyChanged("ProductWeight");
+            }
+        }
+        public string? ProductPrice
+        {
+            get => productPrice;
+            set
+            {
+                productPrice = value;
+                OnPropertyChanged("ProductPrice");
             }
         }
         //

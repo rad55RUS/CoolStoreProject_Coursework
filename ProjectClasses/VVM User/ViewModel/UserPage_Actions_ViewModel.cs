@@ -148,6 +148,7 @@ namespace CoolStoreProject.UserVVM
                       {
                           UserController.ScanProduct();
                           currentProduct = null;
+                          WarningText = "";
                       }
                       else
                       {
