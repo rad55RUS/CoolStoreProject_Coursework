@@ -23,7 +23,6 @@ namespace CoolStoreProject.KioskVVM
         public int Id 
         {
             get => id;
-            set => id = value;
         }
         public string DisplayingName
         {
@@ -58,7 +57,6 @@ namespace CoolStoreProject.KioskVVM
         public double Price
         {
             get => price;
-            set => price = value;
         }
         //
 

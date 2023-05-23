@@ -135,6 +135,7 @@ namespace CoolStoreProject.KioskVVM
                 ProductPrice = Convert.ToString(Math.Round(Convert.ToDouble(weighableProductPrice / 1000 * Convert.ToDouble(weight)), 2)) + "₽";
                 ProductWeight = displayedWeightString;
                 ClientExtraInfo = "Продукт был добавлен в корзину. Вы можете отсканировать следующий продукт, убрать лишние продукты из корзины или перейти к оплате.";
+                BasketContent.Add(ProductName);
 
                 weighableProductPrice = null;
             }
