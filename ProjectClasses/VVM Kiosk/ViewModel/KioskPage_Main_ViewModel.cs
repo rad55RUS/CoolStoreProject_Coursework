@@ -223,7 +223,10 @@ namespace CoolStoreProject.KioskVVM
                 return paymentCommand ??
                   (paymentCommand = new RelayCommand(obj =>
                   {
-                      KioskController.CurrentPage = KioskController.KioskPage_Payment;
+                      if (weighableProductPrice == null)
+                      {
+                          KioskController.CurrentPage = KioskController.KioskPage_Payment;
+                      }
                   }));
             }
         }
