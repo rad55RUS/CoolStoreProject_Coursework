@@ -1,5 +1,4 @@
-﻿using CoolStoreProject.UserVVM;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -25,7 +24,11 @@ namespace CoolStoreProject.KioskVVM
         /// <summary>
         /// Represents collection displaying in basket list box
         /// </summary>
-        public ObservableCollection<BasketProduct>? BasketContent { get; set; }
+        public ObservableCollection<BasketProduct>? BasketContent
+        { 
+            get => KioskController.BasketContent;
+            set => KioskController.BasketContent = value;
+        }
 
         /// <summary>
         /// Represents displaying product picture path
@@ -199,8 +202,29 @@ namespace CoolStoreProject.KioskVVM
                         {
                             BasketContent.Remove(product);
                         }
+                        if (BasketContent.Count == 0)
+                        {
+                            KioskController.CurrentPage = KioskController.KioskPage_ScanWaiting;
+                        }
                     },
                     (obj) => BasketContent.Count > 0));
+            }
+        }
+
+        private RelayCommand? paymentCommand;
+
+        /// <summary>
+        /// Start working with kiosk
+        /// </summary>
+        public RelayCommand? PaymentCommand
+        {
+            get
+            {
+                return paymentCommand ??
+                  (paymentCommand = new RelayCommand(obj =>
+                  {
+                      KioskController.CurrentPage = KioskController.KioskPage_Payment;
+                  }));
             }
         }
         //

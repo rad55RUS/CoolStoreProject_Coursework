@@ -18,17 +18,27 @@ namespace CoolStoreProject.UserVVM
     {
         // Fields
         // Static
+        // ViewModels
         public static readonly Window_ViewModel Window_ViewModel = new();
         public static readonly UserPage_Selection_ViewModel userPage_Selection_ViewModel = new();
         public static readonly UserPage_Actions_ViewModel userPage_Actions_ViewModel = new();
+        //
+        // Pages
         private static readonly UserPage_Selection userPage_Selection = new();
         private static readonly UserPage_Actions userPage_Actions = new();
+        //
+        // Current values
+        private static string inputWeight = "0";
+        private static Product? currentProduct;
+        private static User? currentUser;
+        //
         private static KioskController ?kioskController;
         //
         private readonly UserWindow userWindow;
         //
 
         // Properties
+        // Pages
         public static UserPage_Selection UserPage_Selection
         {
             get => userPage_Selection;
@@ -37,31 +47,7 @@ namespace CoolStoreProject.UserVVM
         {
             get => userPage_Actions;
         }
-        public static Product? CurrentProduct
-        {
-            get => userPage_Actions_ViewModel.CurrentProduct;
-            set
-            {
-                userPage_Actions_ViewModel.CurrentProduct = value;
-            }
-        }
-        public static string InputWeight
-        {
-            get => userPage_Actions_ViewModel.InputWeight;
-            set
-            {
-                userPage_Actions_ViewModel.InputWeight = value;
-            }
-        }
-        public static User ?CurrentUser
-        {
-            get => userPage_Selection_ViewModel.CurrentUser;
-            set
-            {
-                userPage_Selection_ViewModel.CurrentUser = value;
-            }
-        }
-        public static Page ?CurrentPage
+        public static Page? CurrentPage
         {
             get => Window_ViewModel.CurrentPage;
             set
@@ -69,6 +55,33 @@ namespace CoolStoreProject.UserVVM
                 Window_ViewModel.CurrentPage = value;
             }
         }
+        //
+        // Current values
+        public static string InputWeight
+        {
+            get => inputWeight;
+            set
+            {
+                inputWeight = value;
+            }
+        }
+        public static Product? CurrentProduct
+        {
+            get => currentProduct;
+            set
+            {
+                currentProduct = value;
+            }
+        }
+        public static User ?CurrentUser
+        {
+            get => currentUser;
+            set
+            {
+                currentUser = value;
+            }
+        }
+        //
         //
 
         // Constructors

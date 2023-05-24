@@ -39,6 +39,8 @@ namespace CoolStoreProject.KioskVVM
         // Constructors
         public BasketProduct(string name, double price)
         {
+            amount++;
+            this.id = amount;
             this.name = name;
             this.price = price;
         }

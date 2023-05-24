@@ -1,5 +1,7 @@
-﻿using System;
+﻿using CoolStoreProject.UserVVM;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -15,18 +17,32 @@ namespace CoolStoreProject.KioskVVM
     internal class KioskController
     {
         // Fields
-        public static readonly Window_ViewModel window_ViewModel = new();
-        public static readonly KioskPage_Main_ViewModel kioskPage_Main_ViewModel = new();
+        private static readonly Window_ViewModel window_ViewModel = new();
+        private static readonly KioskPage_Main_ViewModel kioskPage_Main_ViewModel = new();
+        private static readonly KioskPage_Payment_ViewModel kioskPage_Payment_ViewModel = new();
         private static readonly KioskPage_ScanWaiting kioskScanWaiting_Page = new();
         private static readonly KioskPage_Main kioskPage_Main = new();
+        private static readonly KioskPage_Payment kioskPage_Payment = new();
         private readonly KioskWindow kioskWindow;
         //
 
         // Properties
+        // Pages
         public static KioskPage_ScanWaiting KioskPage_ScanWaiting
         {
             get => kioskScanWaiting_Page;
         }
+        public static KioskPage_Main KioskPage_Main
+        {
+            get => kioskPage_Main;
+        }
+        public static KioskPage_Payment KioskPage_Payment
+        {
+            get => kioskPage_Payment;
+        }
+        //
+        // Current values
+        public static ObservableCollection<BasketProduct>? BasketContent { get; set; }
         public static Page ?CurrentPage
         {
             get => window_ViewModel.CurrentPage;
@@ -36,6 +52,7 @@ namespace CoolStoreProject.KioskVVM
             }
         }
         //
+        //
 
         // Constructors
         public KioskController(KioskWindow initial)
@@ -43,6 +60,7 @@ namespace CoolStoreProject.KioskVVM
             kioskWindow = initial;
             kioskWindow.DataContext = window_ViewModel;
             kioskPage_Main.DataContext = kioskPage_Main_ViewModel;
+            kioskPage_Payment.DataContext = kioskPage_Payment_ViewModel;
             CurrentPage = kioskScanWaiting_Page;
             kioskWindow.Show();
         }

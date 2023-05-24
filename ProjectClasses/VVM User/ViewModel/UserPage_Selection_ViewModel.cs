@@ -16,7 +16,6 @@ namespace CoolStoreProject.UserVVM
     internal class UserPage_Selection_ViewModel : INotifyPropertyChanged
     {
         // Fields
-        private User ?currentUser;
         private string? warningText;
         //
 
@@ -30,10 +29,10 @@ namespace CoolStoreProject.UserVVM
         /// Represents current user selected in user list box
         /// </summary>
         public User ?CurrentUser {
-            get => currentUser;
+            get => UserController.CurrentUser;
             set
             {
-                currentUser = value;
+                UserController.CurrentUser = value;
                 OnPropertyChanged("CurrentUser");
             }
         }
@@ -147,7 +146,7 @@ namespace CoolStoreProject.UserVVM
                 return startCommand ??
                   (startCommand = new RelayCommand(obj =>
                   {
-                      if (currentUser != null)
+                      if (CurrentUser != null)
                       {
                           UserController.CurrentPage = UserController.UserPage_Actions;
                           UserController.LaunchKiosk();

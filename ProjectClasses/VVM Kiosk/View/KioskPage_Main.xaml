@@ -19,8 +19,8 @@
             <TextBlock HorizontalAlignment="Left" Height="37" Margin="261,183,0,0" TextWrapping="Wrap" Text="{Binding ProductWeight}"  VerticalAlignment="Top" Width="241" FontFamily="Nirmala UI" FontSize="18" Foreground="#FF272727"/>
             <TextBlock HorizontalAlignment="Left" Height="36" Margin="261,220,0,0" TextWrapping="Wrap" Text="{Binding ProductPrice}"  VerticalAlignment="Top" Width="241" FontFamily="Nirmala UI" FontSize="22" Foreground="Black" FontWeight="Bold"/>
             <TextBlock HorizontalAlignment="Center" Height="91" Margin="0,268,0,0" TextWrapping="Wrap" Text="{Binding ClientExtraInfo}"  VerticalAlignment="Top" Width="482" FontFamily="Nirmala UI" FontSize="20" Foreground="#FF272727"/>
-            <Border BorderThickness="1" Grid.Row="0" CornerRadius="0,0,0,0" BorderBrush="#FF101010" Margin="0,364,0,202" Background="#FF101010"/>
-            <ListBox ItemsSource="{Binding BasketContent}" HorizontalAlignment="Center" Height="352" VerticalAlignment="Top" Width="502" BorderBrush="{x:Null}" Background="{x:Null}" Margin="0,364,0,0" Foreground="White" FontFamily="Nirmala UI">
+            <Border BorderThickness="1" Grid.Row="0" CornerRadius="0,0,0,0" BorderBrush="#FF101010" Margin="0,490,0,0" Background="#FF101010"/>
+            <ListBox ItemsSource="{Binding BasketContent}" HorizontalAlignment="Center" Height="428" VerticalAlignment="Top" Width="502" BorderBrush="{x:Null}" Background="{x:Null}" Margin="0,490,0,0" Foreground="White" FontFamily="Nirmala UI">
                 <ListBox.ItemContainerStyle>
                     <Style TargetType="ListBoxItem">
                         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -64,14 +64,14 @@
                             <Setter.Value>
                                 <ControlTemplate TargetType="{x:Type ScrollBar}">
                                     <Grid x:Name="GridRoot" Width="18" Background="#FF101010" Margin="0,0,0,0">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="16"/>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="16"/>
-                                    </Grid.RowDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="16"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="16"/>
+                                        </Grid.RowDefinitions>
                                         <Track x:Name="PART_Track" Grid.Row="1" IsDirectionReversed="True" Focusable="False">
                                             <Track.Thumb>
-                                                <Thumb x:Name="Thumb" Width="10" Background="LightGray">
+                                                <Thumb x:Name="Thumb" Width="12" Background="LightGray">
                                                     <Thumb.Template>
                                                         <ControlTemplate>
                                                             <Grid>
@@ -83,32 +83,32 @@
                                             </Track.Thumb>
                                         </Track>
                                     </Grid>
-                                <ControlTemplate.Triggers>
-                                    <Trigger SourceName="Thumb" Property="IsMouseOver" Value="True">
+                                    <ControlTemplate.Triggers>
+                                        <Trigger SourceName="Thumb" Property="IsMouseOver" Value="True">
                                             <Setter Value="White" TargetName="Thumb" Property="Background"/>
-                                    </Trigger>
-                                    <Trigger SourceName="Thumb" Property="IsDragging" Value="True">
+                                        </Trigger>
+                                        <Trigger SourceName="Thumb" Property="IsDragging" Value="True">
                                             <Setter Value="White" TargetName="Thumb" Property="Background"/>
-                                    </Trigger>
-                                    <Trigger Property="IsEnabled" Value="False">
-                                        <Setter TargetName="Thumb" Property="Visibility" Value="Collapsed"/>
-                                    </Trigger>
-                                    <Trigger Property="Orientation" Value="Horizontal">
-                                        <Setter TargetName="GridRoot" Property="LayoutTransform">
-                                            <Setter.Value>
-                                                <RotateTransform Angle="-90"/>
-                                            </Setter.Value>
-                                        </Setter>
-                                        <Setter TargetName="PART_Track" Property="LayoutTransform">
-                                            <Setter.Value>
-                                                <RotateTransform Angle="-90"/>
-                                            </Setter.Value>
-                                        </Setter>
-                                        <Setter Property="Width" Value="Auto"/>
-                                        <Setter Property="Height" Value="12"/>
+                                        </Trigger>
+                                        <Trigger Property="IsEnabled" Value="False">
+                                            <Setter TargetName="Thumb" Property="Visibility" Value="Collapsed"/>
+                                        </Trigger>
+                                        <Trigger Property="Orientation" Value="Horizontal">
+                                            <Setter TargetName="GridRoot" Property="LayoutTransform">
+                                                <Setter.Value>
+                                                    <RotateTransform Angle="-90"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter TargetName="PART_Track" Property="LayoutTransform">
+                                                <Setter.Value>
+                                                    <RotateTransform Angle="-90"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="Width" Value="Auto"/>
+                                            <Setter Property="Height" Value="12"/>
                                             <Setter TargetName="Thumb" Property="Tag" Value="Horizontal"/>
                                         </Trigger>
-                                </ControlTemplate.Triggers>
+                                    </ControlTemplate.Triggers>
                                 </ControlTemplate>
                             </Setter.Value>
                         </Setter>
@@ -116,13 +116,13 @@
                 </ListBox.Resources>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderBrush="#FF1F1F1F" BorderThickness="2" CornerRadius="0,0,5,5">
-                            <Grid Height="50">
+                        <Border BorderBrush="#FF1D81CE" Background="#FF121212" BorderThickness="4" CornerRadius="13">
+                            <Grid Height="67">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="380"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Text="{Binding DisplayingName}" Margin="5,5" Foreground="White" HorizontalAlignment="Left" Grid.Column="0" Width="Auto" TextWrapping="Wrap" FontFamily="Nirmala UI" FontSize="14"/>
+                                <TextBlock Text="{Binding DisplayingName}" Margin="5,5" Foreground="White" HorizontalAlignment="Left" Grid.Column="0" Width="Auto" TextWrapping="Wrap" FontFamily="Nirmala UI Semilight" FontSize="18" FontWeight="Bold"/>
                                 <Button Content="X" Command="{Binding DataContext.RemoveCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}" CommandParameter="{Binding}" Foreground="White" Margin="0,5,5,0" HorizontalAlignment="Right" Height="37" Width="37" VerticalAlignment="Top" BorderBrush="{x:Null}" FontFamily="Nirmala UI" FontSize="22" Grid.Column="1">
                                     <Button.Resources>
                                         <Style TargetType="Border">
@@ -143,7 +143,7 @@
                                             </Setter>
                                             <Style.Triggers>
                                                 <Trigger Property="IsMouseOver" Value="True">
-                                                    <Setter Property="Background" Value="#FFB73535"/>
+                                                    <Setter Property="Background" Value="#FFA72A2A"/>
                                                 </Trigger>
                                             </Style.Triggers>
                                         </Style>
@@ -154,6 +154,32 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
+            <Button Content="Приступить к оплате" Command="{Binding PaymentCommand}" HorizontalAlignment="Left" Height="42" Margin="282,405,0,0" VerticalAlignment="Top" Width="199" Foreground="White" FontFamily="Nirmala UI" FontSize="18" BorderBrush="{x:Null}">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="18"/>
+                    </Style>
+                </Button.Resources>
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#FF5EC764"/>
+                        <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FF49CC50"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+                </Button.Style>
+            </Button>
         </Grid>
     </Grid>
 </Page>

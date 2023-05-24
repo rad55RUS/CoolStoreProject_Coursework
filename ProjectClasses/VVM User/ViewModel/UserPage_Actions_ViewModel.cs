@@ -14,9 +14,7 @@ namespace CoolStoreProject.UserVVM
     internal class UserPage_Actions_ViewModel : INotifyPropertyChanged
     {
         // Fields
-        private Product? currentProduct;
         private string? warningText;
-        private string inputWeight = "0";
         //
 
         // Properties
@@ -30,10 +28,10 @@ namespace CoolStoreProject.UserVVM
         /// </summary>
         public Product? CurrentProduct
         {
-            get => currentProduct;
+            get => UserController.CurrentProduct;
             set
             {
-                currentProduct = value;
+                UserController.CurrentProduct = value;
                 OnPropertyChanged("CurrentProduct");
             }
         }
@@ -56,10 +54,10 @@ namespace CoolStoreProject.UserVVM
         /// </summary>
         public string InputWeight
         {
-            get => inputWeight;
+            get => UserController.InputWeight;
             set
             {
-                inputWeight = value;
+                UserController.InputWeight = value;
                 OnPropertyChanged("InputWeight");
             }
         }
@@ -194,7 +192,7 @@ namespace CoolStoreProject.UserVVM
                 return scanCommand ??
                   (scanCommand = new RelayCommand(obj =>
                   {
-                      if (currentProduct != null)
+                      if (CurrentProduct != null)
                       {
                           UserController.ScanProduct();
                           WarningText = "";
