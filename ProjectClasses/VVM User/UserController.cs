@@ -22,10 +22,12 @@ namespace CoolStoreProject.UserVVM
         public static readonly Window_ViewModel Window_ViewModel = new();
         public static readonly UserPage_Selection_ViewModel userPage_Selection_ViewModel = new();
         public static readonly UserPage_Actions_ViewModel userPage_Actions_ViewModel = new();
+        public static readonly UserPage_Payment_ViewModel userPage_Payment_ViewModel = new();
         //
         // Pages
         private static readonly UserPage_Selection userPage_Selection = new();
         private static readonly UserPage_Actions userPage_Actions = new();
+        private static readonly UserPage_Payment userPage_Payment = new();
         //
         // Current values
         private static string inputWeight = "0";
@@ -46,6 +48,10 @@ namespace CoolStoreProject.UserVVM
         public static UserPage_Actions UserPage_Actions
         {
             get => userPage_Actions;
+        }
+        public static UserPage_Payment UserPage_Payment
+        {
+            get => userPage_Payment;
         }
         public static Page? CurrentPage
         {
@@ -91,6 +97,7 @@ namespace CoolStoreProject.UserVVM
             userWindow.DataContext = Window_ViewModel;
             userPage_Selection.DataContext = userPage_Selection_ViewModel;
             userPage_Actions.DataContext = userPage_Actions_ViewModel;
+            userPage_Payment.DataContext = userPage_Payment_ViewModel;
             CurrentPage = userPage_Selection;
         }
         //

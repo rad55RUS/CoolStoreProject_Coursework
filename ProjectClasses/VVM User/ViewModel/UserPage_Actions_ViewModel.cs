@@ -204,6 +204,23 @@ namespace CoolStoreProject.UserVVM
                   }));
             }
         }
+
+        private RelayCommand? paymentCommand;
+
+        /// <summary>
+        /// Start working with kiosk
+        /// </summary>
+        public RelayCommand? PaymentCommand
+        {
+            get
+            {
+                return paymentCommand ??
+                  (paymentCommand = new RelayCommand(obj =>
+                  {
+                      UserController.CurrentPage = UserController.UserPage_Payment;
+                  }));
+            }
+        }
         //
 
         // INotifyPropertyChanged realization

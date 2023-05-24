@@ -16,6 +16,9 @@
     <Compile Update="ProjectClasses\VVM Kiosk\View\KioskPage_Main.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="ProjectClasses\VVM User\View\UserPage_Actions.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
