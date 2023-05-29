@@ -46,17 +46,68 @@ namespace CoolStoreProject.UserVVM
 
         // Commands
 
-        private RelayCommand? scanCommand;
+        private RelayCommand? cashCommand;
 
         /// <summary>
-        /// Move to the actions view
+        /// Pay by cash command
         /// </summary>
-        public RelayCommand? ScanCommand
+        public RelayCommand? CashCommand
         {
             get
             {
-                return scanCommand ??
-                  (scanCommand = new RelayCommand(obj =>
+                return cashCommand ??
+                  (cashCommand = new RelayCommand(obj =>
+                  {
+                      UserController.SendCashPayment();
+                  }));
+            }
+        }
+
+        private RelayCommand? cardCommand;
+
+        /// <summary>
+        /// Pay by card command
+        /// </summary>
+        public RelayCommand? CardCommand
+        {
+            get
+            {
+                return cardCommand ??
+                  (cardCommand = new RelayCommand(obj =>
+                  {
+                      UserController.SendCardPayment();
+                  }));
+            }
+        }
+
+        private RelayCommand? bonusesCommand;
+
+        /// <summary>
+        /// Pay by bonuses command
+        /// </summary>
+        public RelayCommand? BonusesCommand
+        {
+            get
+            {
+                return bonusesCommand ??
+                  (bonusesCommand = new RelayCommand(obj =>
+                  {
+                      UserController.SendBonusesPayment();
+                  }));
+            }
+        }
+
+        private RelayCommand? returnCommand;
+
+        /// <summary>
+        /// Move to the actions view comand
+        /// </summary>
+        public RelayCommand? ReturnCommand
+        {
+            get
+            {
+                return returnCommand ??
+                  (returnCommand = new RelayCommand(obj =>
                   {
                       UserController.CurrentPage = UserController.UserPage_Actions;
                   }));

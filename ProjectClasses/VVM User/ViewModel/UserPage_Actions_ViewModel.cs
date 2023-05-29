@@ -169,7 +169,7 @@ namespace CoolStoreProject.UserVVM
                   {
                       if (InputWeight != "0" || InputWeight != "")
                       {
-                          UserController.WeighProduct();
+                          UserController.SendWeighProduct();
                           WarningText = "";
                       }
                       else
@@ -194,7 +194,7 @@ namespace CoolStoreProject.UserVVM
                   {
                       if (CurrentProduct != null)
                       {
-                          UserController.ScanProduct();
+                          UserController.SendScanProduct();
                           WarningText = "";
                       }
                       else

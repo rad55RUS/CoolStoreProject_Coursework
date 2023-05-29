@@ -61,10 +61,37 @@ namespace CoolStoreProject.KioskVVM
 
         // Methods
         /// <summary>
-        /// Open main kiosk page if not opened and call ScanProduct method from main page view model
+        /// Call CashPayment method from main page view model
         /// </summary>
         /// <param name="scannedProduct"></param>
-        public static void ScanProduct(int weight)
+        public static void GetCashPayment(double cash)
+        {
+            kioskPage_Main_ViewModel.CashPayment(cash);
+        }
+
+        /// <summary>
+        /// Call CashPayment method from main page view model
+        /// </summary>
+        /// <param name="scannedProduct"></param>
+        public static void GetCardPayment(double cardMoney)
+        {
+            kioskPage_Main_ViewModel.CardPayment(cardMoney);
+        }
+
+        /// <summary>
+        /// Call CashPayment method from main page view model
+        /// </summary>
+        /// <param name="scannedProduct"></param>
+        public static void GetBonusesPayment(int bonuses)
+        {
+            kioskPage_Main_ViewModel.BonusesPayment(bonuses);
+        }
+
+        /// <summary>
+        /// Call WeighProduct method from main page view model
+        /// </summary>
+        /// <param name="scannedProduct"></param>
+        public static void GetWeighProduct(int weight)
         {
             kioskPage_Main_ViewModel.WeighProduct(weight);
         }
@@ -73,7 +100,7 @@ namespace CoolStoreProject.KioskVVM
         /// Open main kiosk page if not opened and call ScanProduct method from main page view model
         /// </summary>
         /// <param name="scannedProduct"></param>
-        public static void ScanProduct(Product scannedProduct)
+        public static void GetScanProduct(Product scannedProduct)
         {
             window_ViewModel.CurrentPage = kioskPage_Main;
             kioskPage_Main_ViewModel.ScanProduct(scannedProduct);

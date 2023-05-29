@@ -115,17 +115,41 @@ namespace CoolStoreProject.UserVVM
         /// <summary>
         /// Send weighing result to kiosk
         /// </summary>
-        public static void WeighProduct()
+        public static void SendWeighProduct()
         {
-            KioskController.ScanProduct(Convert.ToInt32(InputWeight));
+            KioskController.GetWeighProduct(Convert.ToInt32(InputWeight));
         }
 
         /// <summary>
         /// Send scanned product info to kiosk
         /// </summary>
-        public static void ScanProduct()
+        public static void SendScanProduct()
         {
-            KioskController.ScanProduct(CurrentProduct);
+            KioskController.GetScanProduct(CurrentProduct);
+        }
+
+        /// <summary>
+        /// Send cash data to kiosk
+        /// </summary>
+        public static void SendCashPayment()
+        {
+            KioskController.GetCashPayment(CurrentUser.Cash);
+        }
+
+        /// <summary>
+        /// Send card data to kiosk
+        /// </summary>
+        public static void SendCardPayment()
+        {
+            KioskController.GetCardPayment(CurrentUser.CardMoney);
+        }
+
+        /// <summary>
+        /// Send bonuses data to kiosk
+        /// </summary>
+        public static void SendBonusesPayment()
+        {
+            KioskController.GetBonusesPayment(CurrentUser.Bonuses);
         }
         //
     }

@@ -8,10 +8,10 @@
       Title="User Actions" Width="458" Height="444">
 
     <Grid Background="White" Width="458" Height="450">
-        <Button Content="Cash" HorizontalAlignment="Left" Margin="18,326,0,0" VerticalAlignment="Top" Height="33" Width="121" Style="{StaticResource CommonButton}"/>
-        <Button Content="Card" HorizontalAlignment="Left" Margin="165,326,0,0" VerticalAlignment="Top" Height="33" Width="121" Style="{StaticResource CommonButton}"/>
-        <Button Content="Bonuses" HorizontalAlignment="Left" Margin="314,326,0,0" VerticalAlignment="Top" Height="33" Width="122" Style="{StaticResource CommonButton}"/>
-        <Button Content="Return to scanning" Command="{Binding ScanCommand}" HorizontalAlignment="Left" Margin="327,395,0,0" VerticalAlignment="Top" Height="33" Width="121" Style="{StaticResource FinishButton}"/>
+        <Button Content="Cash" Command="{Binding CashCommand}" HorizontalAlignment="Left" Margin="18,326,0,0" VerticalAlignment="Top" Height="33" Width="121" Style="{StaticResource CommonButton}"/>
+        <Button Content="Card" Command="{Binding CardCommand}" HorizontalAlignment="Left" Margin="165,326,0,0" VerticalAlignment="Top" Height="33" Width="121" Style="{StaticResource CommonButton}"/>
+        <Button Content="Bonuses" Command="{Binding BonusesCommand}" HorizontalAlignment="Left" Margin="314,326,0,0" VerticalAlignment="Top" Height="33" Width="122" Style="{StaticResource CommonButton}"/>
+        <Button Content="Return to scanning" Command="{Binding ReturnCommand}" HorizontalAlignment="Left" Margin="327,395,0,0" VerticalAlignment="Top" Height="33" Width="121" Style="{StaticResource FinishButton}"/>
         <TextBlock HorizontalAlignment="Left" Height="28" Margin="17,176,0,0" TextWrapping="Wrap" Text="{Binding CurrentUser_ID}" VerticalAlignment="Top" Width="431" FontSize="16" FontWeight="Bold"/>
         <TextBlock HorizontalAlignment="Left" Height="28" Margin="17,0,0,0" TextWrapping="Wrap" Text="{Binding CurrentUser_Cash}" VerticalAlignment="Center" Width="431" FontSize="16"/>
         <TextBlock HorizontalAlignment="Left" Height="28" Margin="17,242,0,0" TextWrapping="Wrap" Text="{Binding CurrentUser_CardMoney}" VerticalAlignment="Top" Width="431" FontSize="16"/>

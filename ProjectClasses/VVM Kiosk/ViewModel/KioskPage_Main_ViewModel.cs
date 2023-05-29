@@ -20,6 +20,8 @@ namespace CoolStoreProject.KioskVVM
         private string? clientExtraInfo;
         private double? weighableProductPrice;
         private double? paymentAmount_Double = 0;
+        private double? useBonuses = -1;
+
         private bool isPaymentProcess = false;
         //
 
@@ -107,15 +109,33 @@ namespace CoolStoreProject.KioskVVM
             set
             {
                 paymentAmount_Double = value;
-                PaymentAmount = value.ToString() + "₽";
                 OnPropertyChanged("PaymentAmount");
             }
         }
 
         /// <summary>
+        /// </summary>
+        private bool IsPaymentProcess
+        {
+            get => isPaymentProcess;
+            set
+            {
+                isPaymentProcess = value;
+                OnPropertyChanged("PaymentVisibility");
+            }
+        }
+
+        // Readonly
+        /// <summary>
         /// Represents displaying payment amount
         /// </summary>
-        public string? PaymentAmount { get; set; }
+        public string? PaymentAmount
+        {
+            get
+            {
+                return paymentAmount_Double.ToString() + "₽";
+            }
+        }
 
         /// <summary>
         /// Represents displaying payment waiting grid
@@ -134,18 +154,7 @@ namespace CoolStoreProject.KioskVVM
                 }
             } 
         }
-
-        /// <summary>
-        /// </summary>
-        private bool IsPaymentProcess
-        {
-            get => isPaymentProcess;
-            set
-            {
-                isPaymentProcess = value;
-                OnPropertyChanged("PaymentVisibility");
-            }
-        }
+        //
         //
 
         // Constructors
@@ -181,7 +190,7 @@ namespace CoolStoreProject.KioskVVM
                 ClientExtraInfo = "Продукт был добавлен в корзину. Вы можете отсканировать следующий продукт, убрать лишние продукты из корзины или перейти к оплате.";
                 BasketContent.Add(new BasketProduct(productName, Convert.ToDouble(weighableProductPrice)));
 
-                paymentAmount_Double += weighableProductPrice;
+                PaymentAmount_Double += weighableProductPrice;
 
                 weighableProductPrice = null;
             }
@@ -193,49 +202,100 @@ namespace CoolStoreProject.KioskVVM
         /// <param name="scannedProduct"></param>
         public void ScanProduct(Product scannedProduct)
         {
-            if (weighableProductPrice == null)
+            if (!IsPaymentProcess)
             {
-                string displayedWeightVolumeString;
-                if (scannedProduct.Weight > 0)
+                if (weighableProductPrice == null)
                 {
-                    if (scannedProduct.Weight >= 1000)
+                    string displayedWeightVolumeString;
+                    if (scannedProduct.Weight > 0)
                     {
-                        displayedWeightVolumeString = Convert.ToString(Math.Round(Convert.ToDouble(scannedProduct.Weight / 1000), 2)) + " кг";
+                        if (scannedProduct.Weight >= 1000)
+                        {
+                            displayedWeightVolumeString = Convert.ToString(Math.Round(Convert.ToDouble(scannedProduct.Weight / 1000), 2)) + " кг";
+                        }
+                        else
+                        {
+                            displayedWeightVolumeString = Convert.ToString(scannedProduct.Weight) + " г";
+                        }
                     }
                     else
                     {
-                        displayedWeightVolumeString = Convert.ToString(scannedProduct.Weight) + " г";
+                        if (scannedProduct.Volume >= 1000)
+                        {
+                            displayedWeightVolumeString = Convert.ToString(Math.Round(Convert.ToDouble(scannedProduct.Volume / 1000), 2)) + " л";
+                        }
+                        else
+                        {
+                            displayedWeightVolumeString = Convert.ToString(scannedProduct.Volume) + " мл";
+                        }
                     }
-                }
-                else
-                {
-                    if (scannedProduct.Volume >= 1000)
+
+                    CurrentPicture = scannedProduct.ImagePath;
+                    ProductName = scannedProduct.Name;
+                    ProductWeight = displayedWeightVolumeString;
+                    ProductPrice = Convert.ToString(Math.Round(scannedProduct.Price, 2)) + "₽";
+                    if (scannedProduct.IsWeighable)
                     {
-                        displayedWeightVolumeString = Convert.ToString(Math.Round(Convert.ToDouble(scannedProduct.Volume / 1000), 2)) + " л";
+                        ClientExtraInfo = "Необходимо взвесить продукт перед добавлением в корзину!";
+                        weighableProductPrice = scannedProduct.Price;
                     }
                     else
                     {
-                        displayedWeightVolumeString = Convert.ToString(scannedProduct.Volume) + " мл";
+                        ClientExtraInfo = "Продукт был добавлен в корзину. Вы можете отсканировать следующий продукт, убрать лишние продукты из корзины или перейти к оплате.";
+                        weighableProductPrice = null;
+                        BasketContent.Add(new BasketProduct(scannedProduct.Name, scannedProduct.Price));
+
+                        PaymentAmount_Double += scannedProduct.Price;
                     }
                 }
+            }
+        }
 
-                CurrentPicture = scannedProduct.ImagePath;
-                ProductName = scannedProduct.Name;
-                ProductWeight = displayedWeightVolumeString;
-                ProductPrice = Convert.ToString(Math.Round(scannedProduct.Price, 2)) + "₽";
-                if (scannedProduct.IsWeighable)
-                {
-                    ClientExtraInfo = "Необходимо взвесить продукт перед добавлением в корзину!";
-                    weighableProductPrice = scannedProduct.Price;
-                }
-                else
-                {
-                    ClientExtraInfo = "Продукт был добавлен в корзину. Вы можете отсканировать следующий продукт, убрать лишние продукты из корзины или перейти к оплате.";
-                    weighableProductPrice = null;
-                    BasketContent.Add(new BasketProduct(scannedProduct.Name, scannedProduct.Price));
+        /// <summary>
+        /// Pay by cash method
+        /// </summary>
+        /// <param name="cash"></param>
+        public void CashPayment(double cash)
+        {
+            if (cash > 0)
+            {
 
-                    paymentAmount_Double += scannedProduct.Price;
-                }
+            }
+            else
+            {
+
+            }
+        }
+
+        /// <summary>
+        /// Pay by card method
+        /// </summary>
+        /// <param name="cash"></param>
+        public void CardPayment(double cardMoney)
+        {
+            if (cardMoney > 0)
+            {
+
+            }
+            else
+            {
+
+            }
+        }
+
+        /// <summary>
+        /// Pay by bonuses method
+        /// </summary>
+        /// <param name="cash"></param>
+        public void BonusesPayment(int bonuses)
+        {
+            if (bonuses > 0)
+            {
+
+            }
+            else
+            {
+
             }
         }
         //
@@ -258,7 +318,7 @@ namespace CoolStoreProject.KioskVVM
                         {
                             BasketContent.Remove(product);
 
-                            paymentAmount_Double -= product.Price;
+                            PaymentAmount_Double -= product.Price;
                         }
                         if (BasketContent.Count == 0)
                         {
@@ -288,6 +348,24 @@ namespace CoolStoreProject.KioskVVM
                       {
                           IsPaymentProcess = true;
                       }
+                  }));
+            }
+        }
+
+        private RelayCommand? returnCommand;
+
+        /// <summary>
+        /// Start working with kiosk
+        /// </summary>
+        public RelayCommand? ReturnCommand
+        {
+            get
+            {
+                return returnCommand ??
+                  (returnCommand = new RelayCommand(obj =>
+                  {
+                      IsPaymentProcess = false;
+                      useBonuses = 0;
                   }));
             }
         }

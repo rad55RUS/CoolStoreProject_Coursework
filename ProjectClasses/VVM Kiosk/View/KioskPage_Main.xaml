@@ -185,6 +185,32 @@
         </Grid>
         <Grid HorizontalAlignment="Center" Height="520" VerticalAlignment="Top" Width="940" Grid.RowSpan="2" Background="#54000000" Visibility="{Binding PaymentVisibility}" d:IsHidden="True">
             <TextBlock Text="Ожидание оплаты товаров" HorizontalAlignment="Center" Height="60" VerticalAlignment="Top" Width="756" FontFamily="Nirmala UI" FontSize="36" FontWeight="Bold" Foreground="White" TextWrapping="Wrap" TextAlignment="Center" Margin="0,141,0,0"/>
+            <Button Content="Назад" Command="{Binding ReturnCommand}" HorizontalAlignment="Left" Height="42" Margin="731,466,0,0" VerticalAlignment="Top" Width="199" Foreground="White" FontFamily="Nirmala UI" FontSize="18" BorderBrush="{x:Null}">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="18"/>
+                    </Style>
+                </Button.Resources>
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#FFC75E5E"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FFCC4949"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
         </Grid>
     </Grid>
 </Page>
