@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Automation;
 
-namespace CoolStoreProject
+namespace CoolStoreProject.UserVVM
 {
     /// <summary>
     /// Represents user for imitation of user interaction with kiosk
@@ -22,6 +22,7 @@ namespace CoolStoreProject
         private double cash;
         private double cardMoney;
         private string bonusCard;
+        private int bonuses;
         //
         //
 
@@ -42,6 +43,11 @@ namespace CoolStoreProject
             get => bonusCard;
             set => bonusCard = value;
         }
+        public int Bonuses
+        {
+            get => bonuses;
+            set => bonuses = value;
+        }
         //
         // Representation
         public string ID_Representation {
@@ -56,11 +62,15 @@ namespace CoolStoreProject
         public string BonusCard_Representation { 
             get => "Bonus card number: " + bonusCard;
         }
+        public string Bonuses_Representation
+        {
+            get => "Bonuses: " + bonuses.ToString();
+        }
         //
         //
 
         // Constructors
-        public User(double cash, double cardMoney, string bonusCard)
+        public User(double cash, double cardMoney, string bonusCard, int bonuses)
         {
             amount++;
 
@@ -68,6 +78,7 @@ namespace CoolStoreProject
             this.cash = cash;
             this.cardMoney = cardMoney;
             this.bonusCard = bonusCard;
+            this.bonuses = bonuses;
         }
         //
     }

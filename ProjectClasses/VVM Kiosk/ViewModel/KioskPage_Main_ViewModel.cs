@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace CoolStoreProject.KioskVVM
 {
@@ -18,6 +19,8 @@ namespace CoolStoreProject.KioskVVM
         private string? productPrice;
         private string? clientExtraInfo;
         private double? weighableProductPrice;
+        private double? paymentAmount_Double = 0;
+        private bool isPaymentProcess = false;
         //
 
         // Properties
@@ -25,7 +28,7 @@ namespace CoolStoreProject.KioskVVM
         /// Represents collection displaying in basket list box
         /// </summary>
         public ObservableCollection<BasketProduct>? BasketContent
-        { 
+        {
             get => KioskController.BasketContent;
             set => KioskController.BasketContent = value;
         }
@@ -94,6 +97,55 @@ namespace CoolStoreProject.KioskVVM
                 OnPropertyChanged("ClientExtraInfo");
             }
         }
+
+        /// <summary>
+        /// Represents payment amount
+        /// </summary>
+        public double? PaymentAmount_Double
+        {
+            get => paymentAmount_Double;
+            set
+            {
+                paymentAmount_Double = value;
+                PaymentAmount = value.ToString() + "₽";
+                OnPropertyChanged("PaymentAmount");
+            }
+        }
+
+        /// <summary>
+        /// Represents displaying payment amount
+        /// </summary>
+        public string? PaymentAmount { get; set; }
+
+        /// <summary>
+        /// Represents displaying payment waiting grid
+        /// </summary>
+        public Visibility PaymentVisibility
+        {
+            get
+            {
+                if (isPaymentProcess)
+                {
+                    return Visibility.Visible;
+                }
+                else
+                {
+                    return Visibility.Collapsed;
+                }
+            } 
+        }
+
+        /// <summary>
+        /// </summary>
+        private bool IsPaymentProcess
+        {
+            get => isPaymentProcess;
+            set
+            {
+                isPaymentProcess = value;
+                OnPropertyChanged("PaymentVisibility");
+            }
+        }
         //
 
         // Constructors
@@ -128,6 +180,8 @@ namespace CoolStoreProject.KioskVVM
 
                 ClientExtraInfo = "Продукт был добавлен в корзину. Вы можете отсканировать следующий продукт, убрать лишние продукты из корзины или перейти к оплате.";
                 BasketContent.Add(new BasketProduct(productName, Convert.ToDouble(weighableProductPrice)));
+
+                paymentAmount_Double += weighableProductPrice;
 
                 weighableProductPrice = null;
             }
@@ -179,6 +233,8 @@ namespace CoolStoreProject.KioskVVM
                     ClientExtraInfo = "Продукт был добавлен в корзину. Вы можете отсканировать следующий продукт, убрать лишние продукты из корзины или перейти к оплате.";
                     weighableProductPrice = null;
                     BasketContent.Add(new BasketProduct(scannedProduct.Name, scannedProduct.Price));
+
+                    paymentAmount_Double += scannedProduct.Price;
                 }
             }
         }
@@ -201,10 +257,15 @@ namespace CoolStoreProject.KioskVVM
                         if (product != null)
                         {
                             BasketContent.Remove(product);
+
+                            paymentAmount_Double -= product.Price;
                         }
                         if (BasketContent.Count == 0)
                         {
-                            KioskController.CurrentPage = KioskController.KioskPage_ScanWaiting;
+                            if (weighableProductPrice == null)
+                            {
+                                KioskController.CurrentPage = KioskController.KioskPage_ScanWaiting;
+                            }
                         }
                     },
                     (obj) => BasketContent.Count > 0));
@@ -225,7 +286,7 @@ namespace CoolStoreProject.KioskVVM
                   {
                       if (weighableProductPrice == null)
                       {
-                          KioskController.CurrentPage = KioskController.KioskPage_Payment;
+                          IsPaymentProcess = true;
                       }
                   }));
             }

@@ -96,8 +96,6 @@ namespace CoolStoreProject.UserVVM
             userWindow = initial;
             userWindow.DataContext = Window_ViewModel;
             userPage_Selection.DataContext = userPage_Selection_ViewModel;
-            userPage_Actions.DataContext = userPage_Actions_ViewModel;
-            userPage_Payment.DataContext = userPage_Payment_ViewModel;
             CurrentPage = userPage_Selection;
         }
         //
@@ -109,6 +107,9 @@ namespace CoolStoreProject.UserVVM
         public static void LaunchKiosk()
         {
             kioskController = new KioskController(new KioskWindow());
+
+            userPage_Actions.DataContext = userPage_Actions_ViewModel;
+            userPage_Payment.DataContext = userPage_Payment_ViewModel;
         }
 
         /// <summary>

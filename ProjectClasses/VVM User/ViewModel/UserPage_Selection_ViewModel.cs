@@ -54,7 +54,7 @@ namespace CoolStoreProject.UserVVM
         // Constructors
         public UserPage_Selection_ViewModel()
         {
-            LoadUserData(Environment.CurrentDirectory + @"\Data\Users.xml");
+            LoadUserData(Environment.CurrentDirectory + @"\Data\Users.xml", Environment.CurrentDirectory + @"\Data\BonusCards.xml");
         }
         //
 
@@ -62,15 +62,13 @@ namespace CoolStoreProject.UserVVM
         /// <summary>
         /// Load user data from Users.xml
         /// </summary>
-        /// <param name="path"></param>
-        /// <exception cref="Exception"></exception>
-        public void LoadUserData(string path)
+        public void LoadUserData(string usersDataPath, string bonusDataPath)
         {
             try
             {
                 Users = new ObservableCollection<User>();
                 XmlDocument users_XML = new();
-                users_XML.Load(path);
+                users_XML.Load(usersDataPath);
                 XmlElement ?users_Root = users_XML.DocumentElement;
                 if (users_XML != null)
                 {
@@ -79,6 +77,7 @@ namespace CoolStoreProject.UserVVM
                         double cash = 0;
                         double cardMoney = 0;
                         string bonusCard = "";
+                        int bonuses = -1;
 
 
                         foreach (XmlNode user_Node in users_Node.ChildNodes)
@@ -122,7 +121,36 @@ namespace CoolStoreProject.UserVVM
                             }
                         }
 
-                        Users.Add(new(cash, cardMoney, bonusCard));
+                        XmlDocument bonusCards_XML = new();
+                        bonusCards_XML.Load(bonusDataPath);
+                        XmlElement? bonusCards_Root = bonusCards_XML.DocumentElement;
+
+                        if (bonusCards_XML != null)
+                        {
+                            foreach (XmlElement bonusCards_Node in bonusCards_Root)
+                            {
+                                foreach (XmlNode bonusCard_Node in bonusCards_Node.ChildNodes)
+                                {
+                                    if (bonusCard_Node.Name == "Number")
+                                    {
+                                        if (bonusCard_Node.InnerText != bonusCard)
+                                        {
+                                            break;
+                                        }
+                                    }
+                                    if (bonusCard_Node.Name == "Bonuses")
+                                    {
+                                        bonuses = Convert.ToInt32(bonusCard_Node.InnerText);
+                                    }
+                                }
+                                if (bonuses != -1)
+                                {
+                                    break;
+                                }
+                            }
+
+                            Users.Add(new(cash, cardMoney, bonusCard, bonuses));
+                        }
                     }
                 }
             }

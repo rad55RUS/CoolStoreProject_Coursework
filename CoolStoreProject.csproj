@@ -10,9 +10,6 @@
   <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
 
   <ItemGroup>
-    <Compile Update="ProjectClasses\VVM Kiosk\View\KioskPage_Payment.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="ProjectClasses\VVM Kiosk\View\KioskPage_Main.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

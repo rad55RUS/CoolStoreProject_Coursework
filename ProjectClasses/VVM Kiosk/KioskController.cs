@@ -19,10 +19,8 @@ namespace CoolStoreProject.KioskVVM
         // Fields
         private static readonly Window_ViewModel window_ViewModel = new();
         private static readonly KioskPage_Main_ViewModel kioskPage_Main_ViewModel = new();
-        private static readonly KioskPage_Payment_ViewModel kioskPage_Payment_ViewModel = new();
         private static readonly KioskPage_ScanWaiting kioskScanWaiting_Page = new();
         private static readonly KioskPage_Main kioskPage_Main = new();
-        private static readonly KioskPage_Payment kioskPage_Payment = new();
         private readonly KioskWindow kioskWindow;
         //
 
@@ -35,10 +33,6 @@ namespace CoolStoreProject.KioskVVM
         public static KioskPage_Main KioskPage_Main
         {
             get => kioskPage_Main;
-        }
-        public static KioskPage_Payment KioskPage_Payment
-        {
-            get => kioskPage_Payment;
         }
         //
         // Current values
@@ -60,7 +54,6 @@ namespace CoolStoreProject.KioskVVM
             kioskWindow = initial;
             kioskWindow.DataContext = window_ViewModel;
             kioskPage_Main.DataContext = kioskPage_Main_ViewModel;
-            kioskPage_Payment.DataContext = kioskPage_Payment_ViewModel;
             CurrentPage = kioskScanWaiting_Page;
             kioskWindow.Show();
         }

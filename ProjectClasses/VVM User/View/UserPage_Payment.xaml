@@ -7,5 +7,18 @@
       mc:Ignorable="d"
       Title="User Actions" Width="458" Height="444">
 
-    <Grid Background="White" Width="458" Height="450"/>
+    <Grid Background="White" Width="458" Height="450">
+        <Button Content="Cash" HorizontalAlignment="Left" Margin="18,326,0,0" VerticalAlignment="Top" Height="33" Width="121" Style="{StaticResource CommonButton}"/>
+        <Button Content="Card" HorizontalAlignment="Left" Margin="165,326,0,0" VerticalAlignment="Top" Height="33" Width="121" Style="{StaticResource CommonButton}"/>
+        <Button Content="Bonuses" HorizontalAlignment="Left" Margin="314,326,0,0" VerticalAlignment="Top" Height="33" Width="122" Style="{StaticResource CommonButton}"/>
+        <Button Content="Return to scanning" Command="{Binding ScanCommand}" HorizontalAlignment="Left" Margin="327,395,0,0" VerticalAlignment="Top" Height="33" Width="121" Style="{StaticResource FinishButton}"/>
+        <TextBlock HorizontalAlignment="Left" Height="28" Margin="17,176,0,0" TextWrapping="Wrap" Text="{Binding CurrentUser_ID}" VerticalAlignment="Top" Width="431" FontSize="16" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Height="28" Margin="17,0,0,0" TextWrapping="Wrap" Text="{Binding CurrentUser_Cash}" VerticalAlignment="Center" Width="431" FontSize="16"/>
+        <TextBlock HorizontalAlignment="Left" Height="28" Margin="17,242,0,0" TextWrapping="Wrap" Text="{Binding CurrentUser_CardMoney}" VerticalAlignment="Top" Width="431" FontSize="16"/>
+        <TextBlock HorizontalAlignment="Left" Height="28" Margin="17,276,0,0" TextWrapping="Wrap" Text="{Binding CurrentUser_Bonuses}" VerticalAlignment="Top" Width="431" FontSize="16"/>
+        <TextBlock HorizontalAlignment="Left" Height="140" Margin="17,18,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="431" FontSize="18" TextAlignment="Justify" Text="Select payment method or return to product scanning page.           
+                                                            *You can use only one method of payment except bonuses. 
+                                                                *You can only pay a certain amount with your bonuses (for example - 30% of sum)"/>
+        <Border BorderBrush="#FF2F2F2F" BorderThickness="2" HorizontalAlignment="Center" Height="199" Margin="0,176,0,0" VerticalAlignment="Top" Width="438"/>
+    </Grid>
 </Page>

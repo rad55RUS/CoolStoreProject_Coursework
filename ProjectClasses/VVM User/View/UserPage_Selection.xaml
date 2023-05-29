@@ -19,6 +19,7 @@
                         <TextBlock Text="{Binding Cash_Representation}"/>
                         <TextBlock Text="{Binding CardMoney_Representation}"/>
                         <TextBlock Text="{Binding BonusCard_Representation}"/>
+                        <TextBlock Text="{Binding Bonuses_Representation}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

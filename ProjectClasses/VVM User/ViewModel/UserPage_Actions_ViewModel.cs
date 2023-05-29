@@ -208,7 +208,7 @@ namespace CoolStoreProject.UserVVM
         private RelayCommand? paymentCommand;
 
         /// <summary>
-        /// Start working with kiosk
+        /// Move to the payment view
         /// </summary>
         public RelayCommand? PaymentCommand
         {
