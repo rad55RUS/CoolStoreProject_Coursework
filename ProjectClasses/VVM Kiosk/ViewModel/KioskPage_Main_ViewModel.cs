@@ -13,16 +13,25 @@ namespace CoolStoreProject.KioskVVM
     internal class KioskPage_Main_ViewModel : INotifyPropertyChanged
     {
         // Fields
+        // Strings
         private string? currentPicture;
         private string? productName;
         private string? productWeight;
         private string? productPrice;
         private string? clientExtraInfo;
-        private double? weighableProductPrice;
-        private double? paymentAmount_Double = 0;
-        private double? useBonuses = -1;
-
-        private bool isPaymentProcess = false;
+        private string? waitingText;
+        //
+        // Doubles
+        private double weighableProductPrice = 0;
+        private double paymentAmount_Double = 0;
+        // Integers
+        private int useBonuses = 0;
+        //
+        // Booleans
+        private bool isPaymentFinished = false;
+        private bool isPaymentWaiting = false;
+        private bool isBonusesPayment = false;
+        //
         //
 
         // Properties
@@ -103,11 +112,12 @@ namespace CoolStoreProject.KioskVVM
         /// <summary>
         /// Represents payment amount
         /// </summary>
-        public double? PaymentAmount_Double
+        public double PaymentAmount_Double
         {
             get => paymentAmount_Double;
             set
             {
+                useBonuses = 0;
                 paymentAmount_Double = value;
                 OnPropertyChanged("PaymentAmount");
             }
@@ -115,13 +125,36 @@ namespace CoolStoreProject.KioskVVM
 
         /// <summary>
         /// </summary>
-        private bool IsPaymentProcess
+        private bool IsPaymentWaiting
         {
-            get => isPaymentProcess;
+            get => isPaymentWaiting;
             set
             {
-                isPaymentProcess = value;
+                isPaymentWaiting = value;
                 OnPropertyChanged("PaymentVisibility");
+            }
+        }
+
+        /// <summary>
+        /// </summary>
+        private bool IsPaymentFinished
+        {
+            get => isPaymentFinished;
+            set
+            {
+                isPaymentFinished = value;
+            }
+        }
+
+        /// <summary>
+        /// </summary>
+        private bool IsBonusesPayment
+        {
+            get => isBonusesPayment;
+            set
+            {
+                isBonusesPayment = value;
+                OnPropertyChanged("BonusesPaymentVisibility");
             }
         }
 
@@ -144,7 +177,7 @@ namespace CoolStoreProject.KioskVVM
         {
             get
             {
-                if (isPaymentProcess)
+                if (isPaymentWaiting)
                 {
                     return Visibility.Visible;
                 }
@@ -153,6 +186,34 @@ namespace CoolStoreProject.KioskVVM
                     return Visibility.Collapsed;
                 }
             } 
+        }
+
+        /// <summary>
+        /// Represents displaying payment waiting grid
+        /// </summary>
+        public Visibility BonusesPaymentVisibility
+        {
+            get
+            {
+                if (isBonusesPayment)
+                {
+                    return Visibility.Visible;
+                }
+                else
+                {
+                    return Visibility.Collapsed;
+                }
+            }
+        }
+
+        public string? WaitingText
+        {
+            get => waitingText;
+            set
+            {
+                waitingText = value;
+                OnPropertyChanged("WaitingText");
+            }
         }
         //
         //
@@ -172,7 +233,7 @@ namespace CoolStoreProject.KioskVVM
         public void WeighProduct(int weight)
         {
             string displayedWeightString;
-            if (weighableProductPrice != null)
+            if (weighableProductPrice != 0)
             {
                 if (weight >= 1000)
                 {
@@ -192,7 +253,7 @@ namespace CoolStoreProject.KioskVVM
 
                 PaymentAmount_Double += weighableProductPrice;
 
-                weighableProductPrice = null;
+                weighableProductPrice = 0;
             }
         }
 
@@ -202,9 +263,9 @@ namespace CoolStoreProject.KioskVVM
         /// <param name="scannedProduct"></param>
         public void ScanProduct(Product scannedProduct)
         {
-            if (!IsPaymentProcess)
+            if (!IsPaymentWaiting)
             {
-                if (weighableProductPrice == null)
+                if (weighableProductPrice == 0)
                 {
                     string displayedWeightVolumeString;
                     if (scannedProduct.Weight > 0)
@@ -242,7 +303,7 @@ namespace CoolStoreProject.KioskVVM
                     else
                     {
                         ClientExtraInfo = "Продукт был добавлен в корзину. Вы можете отсканировать следующий продукт, убрать лишние продукты из корзины или перейти к оплате.";
-                        weighableProductPrice = null;
+                        weighableProductPrice = 0;
                         BasketContent.Add(new BasketProduct(scannedProduct.Name, scannedProduct.Price));
 
                         PaymentAmount_Double += scannedProduct.Price;
@@ -257,13 +318,22 @@ namespace CoolStoreProject.KioskVVM
         /// <param name="cash"></param>
         public void CashPayment(double cash)
         {
-            if (cash > 0)
+            if (IsPaymentWaiting && !IsPaymentFinished && !IsBonusesPayment)
             {
+                if (cash > 0)
+                {
+                    if (cash > paymentAmount_Double - Convert.ToDouble(useBonuses))
+                    {
+                        IsPaymentFinished = true;
+                        WaitingText = "Оплата пройдена. Не забудьте забрать сдачу.";
 
-            }
-            else
-            {
+                    }
+                    else
+                    {
+                        WaitingText = "Внесено недостаточно купюр. Доложите купюры или попробуйте другой способ оплаты.";
 
+                    }
+                }
             }
         }
 
@@ -273,13 +343,19 @@ namespace CoolStoreProject.KioskVVM
         /// <param name="cash"></param>
         public void CardPayment(double cardMoney)
         {
-            if (cardMoney > 0)
+            if (IsPaymentWaiting && !IsPaymentFinished && !IsBonusesPayment)
             {
+                if (cardMoney >= paymentAmount_Double - Convert.ToDouble(useBonuses))
+                {
+                    IsPaymentFinished = true;
+                    WaitingText = "Оплата пройдена. Возврат к начальному окну через несколько секунд.";
 
-            }
-            else
-            {
+                }
+                else
+                {
+                    WaitingText = "Недостаточно средств на карте. Попробуйте другой способ оплаты.";
 
+                }
             }
         }
 
@@ -289,13 +365,29 @@ namespace CoolStoreProject.KioskVVM
         /// <param name="cash"></param>
         public void BonusesPayment(int bonuses)
         {
-            if (bonuses > 0)
+            if (IsPaymentWaiting && !IsPaymentFinished && !IsBonusesPayment)
             {
-
-            }
-            else
-            {
-
+                if (bonuses > 0)
+                {
+                    if (bonuses >= paymentAmount_Double / Convert.ToDouble(100) * Convert.ToDouble(3))
+                    {
+                        useBonuses = Convert.ToInt32(Math.Round(paymentAmount_Double / Convert.ToDouble(100) * Convert.ToDouble(3)));
+                        if (useBonuses > paymentAmount_Double / Convert.ToDouble(100) * Convert.ToDouble(3))
+                        {
+                            useBonuses =- 1;
+                        }
+                    }
+                    else
+                    {
+                        useBonuses = bonuses;
+                    }
+                    IsBonusesPayment = true;
+                    WaitingText = "У вас " + Convert.ToString(bonuses) + " бонусов. Хотите ли вы списать бонусы, чтобы оплатить до 30% суммы товаров?";
+                }
+                else
+                {
+                    WaitingText = "У вас " + Convert.ToString(bonuses) + " бонусов. Совершите покупку, чтобы получить 3% бонусов от стоимости товаров.";
+                }
             }
         }
         //
@@ -322,7 +414,7 @@ namespace CoolStoreProject.KioskVVM
                         }
                         if (BasketContent.Count == 0)
                         {
-                            if (weighableProductPrice == null)
+                            if (weighableProductPrice == 0)
                             {
                                 KioskController.CurrentPage = KioskController.KioskPage_ScanWaiting;
                             }
@@ -344,9 +436,10 @@ namespace CoolStoreProject.KioskVVM
                 return paymentCommand ??
                   (paymentCommand = new RelayCommand(obj =>
                   {
-                      if (weighableProductPrice == null)
+                      if (weighableProductPrice == 0)
                       {
-                          IsPaymentProcess = true;
+                          IsPaymentWaiting = true;
+                          WaitingText = "Ожидание оплаты товаров. Не забудьте сперва приложить бонусную карту.";
                       }
                   }));
             }
@@ -364,7 +457,44 @@ namespace CoolStoreProject.KioskVVM
                 return returnCommand ??
                   (returnCommand = new RelayCommand(obj =>
                   {
-                      IsPaymentProcess = false;
+                      IsPaymentWaiting = false;
+                      IsPaymentFinished = false;
+                      IsBonusesPayment = false;
+                      useBonuses = 0;
+                  }));
+            }
+        }
+
+        private RelayCommand? bonusesPayment_Yes;
+
+        /// <summary>
+        /// Use bonuses on payment
+        /// </summary>
+        public RelayCommand? BonusesPayment_Yes
+        {
+            get
+            {
+                return bonusesPayment_Yes ??
+                  (bonusesPayment_Yes = new RelayCommand(obj =>
+                  {
+                      IsBonusesPayment = false;
+                  }));
+            }
+        }
+
+        private RelayCommand? bonusesPayment_No;
+
+        /// <summary>
+        /// Don't use bonuses on payment
+        /// </summary>
+        public RelayCommand? BonusesPayment_No
+        {
+            get
+            {
+                return bonusesPayment_No ??
+                  (bonusesPayment_No = new RelayCommand(obj =>
+                  {
+                      IsBonusesPayment = false;
                       useBonuses = 0;
                   }));
             }
