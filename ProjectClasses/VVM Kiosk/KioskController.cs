@@ -17,11 +17,11 @@ namespace CoolStoreProject.KioskVVM
     internal class KioskController
     {
         // Fields
-        private static Window_ViewModel window_ViewModel = new();
+        private static readonly Window_ViewModel window_ViewModel = new();
         private static KioskPage_Main_ViewModel kioskPage_Main_ViewModel = new();
         private static KioskPage_ScanWaiting kioskScanWaiting_Page = new();
         private static KioskPage_Main kioskPage_Main = new();
-        private readonly KioskWindow kioskWindow;
+        private static KioskWindow? kioskWindow;
         //
 
         // Properties
@@ -55,6 +55,7 @@ namespace CoolStoreProject.KioskVVM
             kioskWindow.DataContext = window_ViewModel;
             kioskPage_Main.DataContext = kioskPage_Main_ViewModel;
             CurrentPage = kioskScanWaiting_Page;
+
             kioskWindow.Show();
         }
         //
@@ -111,12 +112,17 @@ namespace CoolStoreProject.KioskVVM
         /// </summary>
         public static void ResetData()
         {
-            window_ViewModel = new();
+            kioskWindow.Hide();
             kioskPage_Main_ViewModel = new();
             kioskScanWaiting_Page = new();
             kioskPage_Main = new();
             BasketContent = new();
-    }
+
+            kioskPage_Main.DataContext = kioskPage_Main_ViewModel;
+            CurrentPage = kioskScanWaiting_Page;
+
+            kioskWindow.Show();
+        }
         //
     }
 }

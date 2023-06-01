@@ -5,7 +5,9 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Threading;
 using System.Windows;
 
 namespace CoolStoreProject.KioskVVM
@@ -31,6 +33,9 @@ namespace CoolStoreProject.KioskVVM
         private bool isPaymentFinished = false;
         private bool isPaymentWaiting = false;
         private bool isBonusesPayment = false;
+        //
+        // Threads
+        private Thread thread1;
         //
         //
 
@@ -143,6 +148,7 @@ namespace CoolStoreProject.KioskVVM
             set
             {
                 isPaymentFinished = value;
+                OnPropertyChanged("PaymentButtonVisibility");
             }
         }
 
@@ -155,6 +161,7 @@ namespace CoolStoreProject.KioskVVM
             {
                 isBonusesPayment = value;
                 OnPropertyChanged("BonusesPaymentVisibility");
+                OnPropertyChanged("PaymentButtonVisibility");
             }
         }
 
@@ -189,7 +196,7 @@ namespace CoolStoreProject.KioskVVM
         }
 
         /// <summary>
-        /// Represents displaying payment waiting grid
+        /// Represents displaying bonus payment buttons visibility
         /// </summary>
         public Visibility BonusesPaymentVisibility
         {
@@ -206,6 +213,27 @@ namespace CoolStoreProject.KioskVVM
             }
         }
 
+        /// <summary>
+        /// Represents displaying payment and return buttons visibility
+        /// </summary>
+        public Visibility PaymentButtonVisibility
+        {
+            get
+            {
+                if (!isBonusesPayment && !isPaymentFinished)
+                {
+                    return Visibility.Visible;
+                }
+                else
+                {
+                    return Visibility.Collapsed;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Represents displaying text on visibility grid
+        /// </summary>
         public string? WaitingText
         {
             get => waitingText;
@@ -326,12 +354,12 @@ namespace CoolStoreProject.KioskVVM
                     {
                         IsPaymentFinished = true;
                         WaitingText = "Оплата пройдена. Не забудьте забрать сдачу.";
-
+                        thread1 = new Thread(ResetKioskData);
+                        thread1.Start();
                     }
                     else
                     {
                         WaitingText = "Внесено недостаточно купюр. Доложите купюры или попробуйте другой способ оплаты.";
-
                     }
                 }
             }
@@ -349,12 +377,12 @@ namespace CoolStoreProject.KioskVVM
                 {
                     IsPaymentFinished = true;
                     WaitingText = "Оплата пройдена. Возврат к начальному окну через несколько секунд.";
-
+                    thread1 = new Thread(ResetKioskData);
+                    thread1.Start();
                 }
                 else
                 {
                     WaitingText = "Недостаточно средств на карте. Попробуйте другой способ оплаты.";
-
                 }
             }
         }
@@ -389,6 +417,15 @@ namespace CoolStoreProject.KioskVVM
                     WaitingText = "У вас " + Convert.ToString(bonuses) + " бонусов. Совершите покупку, чтобы получить 3% бонусов от стоимости товаров.";
                 }
             }
+        }
+
+        public void ResetKioskData()
+        {
+            Thread.Sleep(5000);
+            App.Current.Dispatcher.Invoke(delegate
+            {
+                KioskController.ResetData();
+            });
         }
         //
 
@@ -478,6 +515,7 @@ namespace CoolStoreProject.KioskVVM
                   (bonusesPayment_Yes = new RelayCommand(obj =>
                   {
                       IsBonusesPayment = false;
+                      WaitingText = "Ожидание оплаты товаров.";
                   }));
             }
         }
@@ -496,6 +534,7 @@ namespace CoolStoreProject.KioskVVM
                   {
                       IsBonusesPayment = false;
                       useBonuses = 0;
+                      WaitingText = "Ожидание оплаты товаров.";
                   }));
             }
         }
