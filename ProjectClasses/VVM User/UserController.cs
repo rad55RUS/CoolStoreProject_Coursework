@@ -19,10 +19,10 @@ namespace CoolStoreProject.UserVVM
         // Fields
         // Static
         // ViewModels
-        public static readonly Window_ViewModel Window_ViewModel = new();
-        public static readonly UserPage_Selection_ViewModel userPage_Selection_ViewModel = new();
-        public static readonly UserPage_Actions_ViewModel userPage_Actions_ViewModel = new();
-        public static readonly UserPage_Payment_ViewModel userPage_Payment_ViewModel = new();
+        private static readonly Window_ViewModel Window_ViewModel = new();
+        private static readonly UserPage_Selection_ViewModel userPage_Selection_ViewModel = new();
+        private static readonly UserPage_Actions_ViewModel userPage_Actions_ViewModel = new();
+        private static readonly UserPage_Payment_ViewModel userPage_Payment_ViewModel = new();
         //
         // Pages
         private static readonly UserPage_Selection userPage_Selection = new();
@@ -35,7 +35,6 @@ namespace CoolStoreProject.UserVVM
         private static User? currentUser;
         //
         private static KioskController ?kioskController;
-        //
         private readonly UserWindow userWindow;
         //
 

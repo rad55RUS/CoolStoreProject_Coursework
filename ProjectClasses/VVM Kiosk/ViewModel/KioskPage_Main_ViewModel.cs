@@ -35,7 +35,7 @@ namespace CoolStoreProject.KioskVVM
         private bool isBonusesPayment = false;
         //
         // Threads
-        private Thread thread1;
+        private Thread? thread1;
         //
         //
 
@@ -43,16 +43,12 @@ namespace CoolStoreProject.KioskVVM
         /// <summary>
         /// Represents collection displaying in basket list box
         /// </summary>
-        public ObservableCollection<BasketProduct>? BasketContent
-        {
-            get => KioskController.BasketContent;
-            set => KioskController.BasketContent = value;
-        }
+        internal ObservableCollection<BasketProduct>? BasketContent { get; set; }
 
         /// <summary>
         /// Represents displaying product picture path
         /// </summary>
-        public string? CurrentPicture
+        internal string? CurrentPicture
         {
             get => currentPicture;
             set
@@ -65,7 +61,7 @@ namespace CoolStoreProject.KioskVVM
         /// <summary>
         /// Represents displaying product name
         /// </summary>
-        public string? ProductName
+        internal string? ProductName
         {
             get => productName;
             set
@@ -78,7 +74,7 @@ namespace CoolStoreProject.KioskVVM
         /// <summary>
         /// Represents displaying product weight
         /// </summary>
-        public string? ProductWeight
+        internal string? ProductWeight
         {
             get => productWeight;
             set
@@ -91,7 +87,7 @@ namespace CoolStoreProject.KioskVVM
         /// <summary>
         /// Represents displaying product price
         /// </summary>
-        public string? ProductPrice
+        internal string? ProductPrice
         {
             get => productPrice;
             set
@@ -104,7 +100,7 @@ namespace CoolStoreProject.KioskVVM
         /// <summary>
         /// Represents displaying extra info to client for next possible actions
         /// </summary>
-        public string? ClientExtraInfo
+        internal string? ClientExtraInfo
         {
             get => clientExtraInfo;
             set
@@ -117,12 +113,11 @@ namespace CoolStoreProject.KioskVVM
         /// <summary>
         /// Represents payment amount
         /// </summary>
-        public double PaymentAmount_Double
+        internal double PaymentAmount_Double
         {
             get => paymentAmount_Double;
             set
             {
-                useBonuses = 0;
                 paymentAmount_Double = value;
                 OnPropertyChanged("PaymentAmount");
             }
@@ -169,7 +164,7 @@ namespace CoolStoreProject.KioskVVM
         /// <summary>
         /// Represents displaying payment amount
         /// </summary>
-        public string? PaymentAmount
+        internal string? PaymentAmount
         {
             get
             {
@@ -180,7 +175,7 @@ namespace CoolStoreProject.KioskVVM
         /// <summary>
         /// Represents displaying payment waiting grid
         /// </summary>
-        public Visibility PaymentVisibility
+        internal Visibility PaymentVisibility
         {
             get
             {
@@ -198,7 +193,7 @@ namespace CoolStoreProject.KioskVVM
         /// <summary>
         /// Represents displaying bonus payment buttons visibility
         /// </summary>
-        public Visibility BonusesPaymentVisibility
+        internal Visibility BonusesPaymentVisibility
         {
             get
             {
@@ -216,7 +211,7 @@ namespace CoolStoreProject.KioskVVM
         /// <summary>
         /// Represents displaying payment and return buttons visibility
         /// </summary>
-        public Visibility PaymentButtonVisibility
+        internal Visibility PaymentButtonVisibility
         {
             get
             {
@@ -234,7 +229,7 @@ namespace CoolStoreProject.KioskVVM
         /// <summary>
         /// Represents displaying text on visibility grid
         /// </summary>
-        public string? WaitingText
+        internal string? WaitingText
         {
             get => waitingText;
             set
@@ -247,7 +242,7 @@ namespace CoolStoreProject.KioskVVM
         //
 
         // Constructors
-        public KioskPage_Main_ViewModel()
+        internal KioskPage_Main_ViewModel()
         {
             BasketContent = new ObservableCollection<BasketProduct>();
         }
@@ -258,7 +253,7 @@ namespace CoolStoreProject.KioskVVM
         /// Show weighing result info and add it to the basket
         /// </summary>
         /// <param name="weight"></param>
-        public void WeighProduct(int weight)
+        internal void WeighProduct(int weight)
         {
             string displayedWeightString;
             if (weighableProductPrice != 0)
@@ -289,7 +284,7 @@ namespace CoolStoreProject.KioskVVM
         /// Show info about scanned product and add it to the basket if isn't weighable
         /// </summary>
         /// <param name="scannedProduct"></param>
-        public void ScanProduct(Product scannedProduct)
+        internal void ScanProduct(Product scannedProduct)
         {
             if (!IsPaymentWaiting)
             {
@@ -344,7 +339,7 @@ namespace CoolStoreProject.KioskVVM
         /// Pay by cash method
         /// </summary>
         /// <param name="cash"></param>
-        public void CashPayment(double cash)
+        internal void CashPayment(double cash)
         {
             if (IsPaymentWaiting && !IsPaymentFinished && !IsBonusesPayment)
             {
@@ -369,7 +364,7 @@ namespace CoolStoreProject.KioskVVM
         /// Pay by card method
         /// </summary>
         /// <param name="cash"></param>
-        public void CardPayment(double cardMoney)
+        internal void CardPayment(double cardMoney)
         {
             if (IsPaymentWaiting && !IsPaymentFinished && !IsBonusesPayment)
             {
@@ -391,7 +386,7 @@ namespace CoolStoreProject.KioskVVM
         /// Pay by bonuses method
         /// </summary>
         /// <param name="cash"></param>
-        public void BonusesPayment(int bonuses)
+        internal void BonusesPayment(int bonuses)
         {
             if (IsPaymentWaiting && !IsPaymentFinished && !IsBonusesPayment)
             {
@@ -402,7 +397,11 @@ namespace CoolStoreProject.KioskVVM
                         useBonuses = Convert.ToInt32(Math.Round(paymentAmount_Double / Convert.ToDouble(100) * Convert.ToDouble(3)));
                         if (useBonuses > paymentAmount_Double / Convert.ToDouble(100) * Convert.ToDouble(3))
                         {
-                            useBonuses =- 1;
+                            useBonuses -= 1;
+                        }
+                        if (useBonuses < 0)
+                        {
+                            useBonuses = 0;
                         }
                     }
                     else
@@ -419,7 +418,7 @@ namespace CoolStoreProject.KioskVVM
             }
         }
 
-        public void ResetKioskData()
+        internal void ResetKioskData()
         {
             Thread.Sleep(5000);
             App.Current.Dispatcher.Invoke(delegate
@@ -435,7 +434,7 @@ namespace CoolStoreProject.KioskVVM
         /// <summary>
         /// Imitate product scanning and send it's info to the kiosk via control
         /// </summary>
-        public RelayCommand? RemoveCommand
+        internal RelayCommand? RemoveCommand
         {
             get
             {
@@ -466,7 +465,7 @@ namespace CoolStoreProject.KioskVVM
         /// <summary>
         /// Start working with kiosk
         /// </summary>
-        public RelayCommand? PaymentCommand
+        internal RelayCommand? PaymentCommand
         {
             get
             {
@@ -487,7 +486,7 @@ namespace CoolStoreProject.KioskVVM
         /// <summary>
         /// Start working with kiosk
         /// </summary>
-        public RelayCommand? ReturnCommand
+        internal RelayCommand? ReturnCommand
         {
             get
             {
@@ -497,6 +496,7 @@ namespace CoolStoreProject.KioskVVM
                       IsPaymentWaiting = false;
                       IsPaymentFinished = false;
                       IsBonusesPayment = false;
+                      PaymentAmount_Double += useBonuses;
                       useBonuses = 0;
                   }));
             }
@@ -507,7 +507,7 @@ namespace CoolStoreProject.KioskVVM
         /// <summary>
         /// Use bonuses on payment
         /// </summary>
-        public RelayCommand? BonusesPayment_Yes
+        internal RelayCommand? BonusesPayment_Yes
         {
             get
             {
@@ -516,6 +516,7 @@ namespace CoolStoreProject.KioskVVM
                   {
                       IsBonusesPayment = false;
                       WaitingText = "Ожидание оплаты товаров.";
+                      PaymentAmount_Double -= useBonuses;
                   }));
             }
         }
@@ -525,7 +526,7 @@ namespace CoolStoreProject.KioskVVM
         /// <summary>
         /// Don't use bonuses on payment
         /// </summary>
-        public RelayCommand? BonusesPayment_No
+        internal RelayCommand? BonusesPayment_No
         {
             get
             {

@@ -21,7 +21,7 @@ namespace CoolStoreProject.KioskVVM
         private static KioskPage_Main_ViewModel kioskPage_Main_ViewModel = new();
         private static KioskPage_ScanWaiting kioskScanWaiting_Page = new();
         private static KioskPage_Main kioskPage_Main = new();
-        private static KioskWindow? kioskWindow;
+        private readonly KioskWindow? kioskWindow;
         //
 
         // Properties
@@ -36,7 +36,6 @@ namespace CoolStoreProject.KioskVVM
         }
         //
         // Current values
-        public static ObservableCollection<BasketProduct>? BasketContent { get; set; }
         public static Page ?CurrentPage
         {
             get => window_ViewModel.CurrentPage;
@@ -112,16 +111,12 @@ namespace CoolStoreProject.KioskVVM
         /// </summary>
         public static void ResetData()
         {
-            kioskWindow.Hide();
             kioskPage_Main_ViewModel = new();
             kioskScanWaiting_Page = new();
             kioskPage_Main = new();
-            BasketContent = new();
 
             kioskPage_Main.DataContext = kioskPage_Main_ViewModel;
             CurrentPage = kioskScanWaiting_Page;
-
-            kioskWindow.Show();
         }
         //
     }

@@ -14,7 +14,7 @@ namespace CoolStoreProject.UserVVM
         /// <summary>
         /// Represents current user ID
         /// </summary>
-        public string? CurrentUser_ID
+        internal string? CurrentUser_ID
         {
             get => UserController.CurrentUser.ID_Representation;
         }
@@ -22,7 +22,7 @@ namespace CoolStoreProject.UserVVM
         /// <summary>
         /// Represents current user ID
         /// </summary>
-        public string? CurrentUser_Cash
+        internal string? CurrentUser_Cash
         {
             get => UserController.CurrentUser.Cash_Representation;
         }
@@ -30,7 +30,7 @@ namespace CoolStoreProject.UserVVM
         /// <summary>
         /// Represents current user ID
         /// </summary>
-        public string? CurrentUser_CardMoney
+        internal string? CurrentUser_CardMoney
         {
             get => UserController.CurrentUser.CardMoney_Representation;
         }
@@ -38,7 +38,7 @@ namespace CoolStoreProject.UserVVM
         /// <summary>
         /// Represents current user bonuses
         /// </summary>
-        public string? CurrentUser_Bonuses
+        internal string? CurrentUser_Bonuses
         {
             get => UserController.CurrentUser.Bonuses_Representation;
         }
@@ -51,7 +51,7 @@ namespace CoolStoreProject.UserVVM
         /// <summary>
         /// Pay by cash command
         /// </summary>
-        public RelayCommand? CashCommand
+        internal RelayCommand? CashCommand
         {
             get
             {
@@ -68,7 +68,7 @@ namespace CoolStoreProject.UserVVM
         /// <summary>
         /// Pay by card command
         /// </summary>
-        public RelayCommand? CardCommand
+        internal RelayCommand? CardCommand
         {
             get
             {
@@ -85,7 +85,7 @@ namespace CoolStoreProject.UserVVM
         /// <summary>
         /// Pay by bonuses command
         /// </summary>
-        public RelayCommand? BonusesCommand
+        internal RelayCommand? BonusesCommand
         {
             get
             {
@@ -102,7 +102,7 @@ namespace CoolStoreProject.UserVVM
         /// <summary>
         /// Move to the actions view comand
         /// </summary>
-        public RelayCommand? ReturnCommand
+        internal RelayCommand? ReturnCommand
         {
             get
             {
