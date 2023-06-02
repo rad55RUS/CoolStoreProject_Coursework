@@ -51,13 +51,6 @@ namespace CoolStoreProject
 
         //
 
-        // Constructors
-        public Window_ViewModel()
-        {
-
-        }
-        //
-
         // INotifyPropertyChanged realization
         public event PropertyChangedEventHandler? PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")

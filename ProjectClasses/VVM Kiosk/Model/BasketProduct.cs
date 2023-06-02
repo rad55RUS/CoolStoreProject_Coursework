@@ -19,25 +19,25 @@ namespace CoolStoreProject.KioskVVM
         //
 
         // Properties
-        internal int Id 
+        public int Id 
         {
             get => id;
         }
-        internal string DisplayingName
+        public string DisplayingName
         {
             get
             {
                 return name + ", " + Convert.ToString(price) + "₽";
             }
         }
-        internal double Price
+        public double Price
         {
             get => price;
         }
         //
 
         // Constructors
-        internal BasketProduct(string name, double price)
+        public BasketProduct(string name, double price)
         {
             amount++;
             this.id = amount;

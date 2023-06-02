@@ -23,12 +23,12 @@ namespace CoolStoreProject.UserVVM
         /// <summary>
         /// Represents collection displaying in user list box
         /// </summary>
-        internal ObservableCollection<User> ?Users { get; set; }
+        public ObservableCollection<User> ?Users { get; set; }
 
         /// <summary>
         /// Represents current user selected in user list box
         /// </summary>
-        internal User ?CurrentUser {
+        public User ?CurrentUser {
             get => UserController.CurrentUser;
             set
             {
@@ -40,7 +40,7 @@ namespace CoolStoreProject.UserVVM
         /// <summary>
         /// Represents displaying warning text
         /// </summary>
-        internal string ?WarningText
+        public string ?WarningText
         {
             get => warningText;
             set
@@ -52,7 +52,7 @@ namespace CoolStoreProject.UserVVM
         //
 
         // Constructors
-        internal UserPage_Selection_ViewModel()
+        public UserPage_Selection_ViewModel()
         {
             LoadUserData(Environment.CurrentDirectory + @"\Data\Users.xml", Environment.CurrentDirectory + @"\Data\BonusCards.xml");
         }
@@ -62,7 +62,7 @@ namespace CoolStoreProject.UserVVM
         /// <summary>
         /// Load user data from Users.xml
         /// </summary>
-        internal void LoadUserData(string usersDataPath, string bonusDataPath)
+        public void LoadUserData(string usersDataPath, string bonusDataPath)
         {
             try
             {
@@ -167,7 +167,7 @@ namespace CoolStoreProject.UserVVM
         /// <summary>
         /// Start working with kiosk
         /// </summary>
-        internal RelayCommand? StartCommand
+        public RelayCommand? StartCommand
         {
             get
             {

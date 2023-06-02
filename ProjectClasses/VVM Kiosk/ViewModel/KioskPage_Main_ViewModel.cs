@@ -43,12 +43,12 @@ namespace CoolStoreProject.KioskVVM
         /// <summary>
         /// Represents collection displaying in basket list box
         /// </summary>
-        internal ObservableCollection<BasketProduct>? BasketContent { get; set; }
+        public ObservableCollection<BasketProduct>? BasketContent { get; set; }
 
         /// <summary>
         /// Represents displaying product picture path
         /// </summary>
-        internal string? CurrentPicture
+        public string? CurrentPicture
         {
             get => currentPicture;
             set
@@ -61,7 +61,7 @@ namespace CoolStoreProject.KioskVVM
         /// <summary>
         /// Represents displaying product name
         /// </summary>
-        internal string? ProductName
+        public string? ProductName
         {
             get => productName;
             set
@@ -74,7 +74,7 @@ namespace CoolStoreProject.KioskVVM
         /// <summary>
         /// Represents displaying product weight
         /// </summary>
-        internal string? ProductWeight
+        public string? ProductWeight
         {
             get => productWeight;
             set
@@ -87,7 +87,7 @@ namespace CoolStoreProject.KioskVVM
         /// <summary>
         /// Represents displaying product price
         /// </summary>
-        internal string? ProductPrice
+        public string? ProductPrice
         {
             get => productPrice;
             set
@@ -100,7 +100,7 @@ namespace CoolStoreProject.KioskVVM
         /// <summary>
         /// Represents displaying extra info to client for next possible actions
         /// </summary>
-        internal string? ClientExtraInfo
+        public string? ClientExtraInfo
         {
             get => clientExtraInfo;
             set
@@ -113,7 +113,7 @@ namespace CoolStoreProject.KioskVVM
         /// <summary>
         /// Represents payment amount
         /// </summary>
-        internal double PaymentAmount_Double
+        public double PaymentAmount_Double
         {
             get => paymentAmount_Double;
             set
@@ -164,7 +164,7 @@ namespace CoolStoreProject.KioskVVM
         /// <summary>
         /// Represents displaying payment amount
         /// </summary>
-        internal string? PaymentAmount
+        public string? PaymentAmount
         {
             get
             {
@@ -175,7 +175,7 @@ namespace CoolStoreProject.KioskVVM
         /// <summary>
         /// Represents displaying payment waiting grid
         /// </summary>
-        internal Visibility PaymentVisibility
+        public Visibility PaymentVisibility
         {
             get
             {
@@ -193,7 +193,7 @@ namespace CoolStoreProject.KioskVVM
         /// <summary>
         /// Represents displaying bonus payment buttons visibility
         /// </summary>
-        internal Visibility BonusesPaymentVisibility
+        public Visibility BonusesPaymentVisibility
         {
             get
             {
@@ -211,7 +211,7 @@ namespace CoolStoreProject.KioskVVM
         /// <summary>
         /// Represents displaying payment and return buttons visibility
         /// </summary>
-        internal Visibility PaymentButtonVisibility
+        public Visibility PaymentButtonVisibility
         {
             get
             {
@@ -229,7 +229,7 @@ namespace CoolStoreProject.KioskVVM
         /// <summary>
         /// Represents displaying text on visibility grid
         /// </summary>
-        internal string? WaitingText
+        public string? WaitingText
         {
             get => waitingText;
             set
@@ -242,7 +242,7 @@ namespace CoolStoreProject.KioskVVM
         //
 
         // Constructors
-        internal KioskPage_Main_ViewModel()
+        public KioskPage_Main_ViewModel()
         {
             BasketContent = new ObservableCollection<BasketProduct>();
         }
@@ -253,7 +253,7 @@ namespace CoolStoreProject.KioskVVM
         /// Show weighing result info and add it to the basket
         /// </summary>
         /// <param name="weight"></param>
-        internal void WeighProduct(int weight)
+        public void WeighProduct(int weight)
         {
             string displayedWeightString;
             if (weighableProductPrice != 0)
@@ -284,7 +284,7 @@ namespace CoolStoreProject.KioskVVM
         /// Show info about scanned product and add it to the basket if isn't weighable
         /// </summary>
         /// <param name="scannedProduct"></param>
-        internal void ScanProduct(Product scannedProduct)
+        public void ScanProduct(Product scannedProduct)
         {
             if (!IsPaymentWaiting)
             {
@@ -339,7 +339,7 @@ namespace CoolStoreProject.KioskVVM
         /// Pay by cash method
         /// </summary>
         /// <param name="cash"></param>
-        internal void CashPayment(double cash)
+        public void CashPayment(double cash)
         {
             if (IsPaymentWaiting && !IsPaymentFinished && !IsBonusesPayment)
             {
@@ -364,7 +364,7 @@ namespace CoolStoreProject.KioskVVM
         /// Pay by card method
         /// </summary>
         /// <param name="cash"></param>
-        internal void CardPayment(double cardMoney)
+        public void CardPayment(double cardMoney)
         {
             if (IsPaymentWaiting && !IsPaymentFinished && !IsBonusesPayment)
             {
@@ -386,7 +386,7 @@ namespace CoolStoreProject.KioskVVM
         /// Pay by bonuses method
         /// </summary>
         /// <param name="cash"></param>
-        internal void BonusesPayment(int bonuses)
+        public void BonusesPayment(int bonuses)
         {
             if (IsPaymentWaiting && !IsPaymentFinished && !IsBonusesPayment)
             {
@@ -418,7 +418,7 @@ namespace CoolStoreProject.KioskVVM
             }
         }
 
-        internal void ResetKioskData()
+        public void ResetKioskData()
         {
             Thread.Sleep(5000);
             App.Current.Dispatcher.Invoke(delegate
@@ -434,7 +434,7 @@ namespace CoolStoreProject.KioskVVM
         /// <summary>
         /// Imitate product scanning and send it's info to the kiosk via control
         /// </summary>
-        internal RelayCommand? RemoveCommand
+        public RelayCommand? RemoveCommand
         {
             get
             {
@@ -465,7 +465,7 @@ namespace CoolStoreProject.KioskVVM
         /// <summary>
         /// Start working with kiosk
         /// </summary>
-        internal RelayCommand? PaymentCommand
+        public RelayCommand? PaymentCommand
         {
             get
             {
@@ -486,7 +486,7 @@ namespace CoolStoreProject.KioskVVM
         /// <summary>
         /// Start working with kiosk
         /// </summary>
-        internal RelayCommand? ReturnCommand
+        public RelayCommand? ReturnCommand
         {
             get
             {
@@ -507,7 +507,7 @@ namespace CoolStoreProject.KioskVVM
         /// <summary>
         /// Use bonuses on payment
         /// </summary>
-        internal RelayCommand? BonusesPayment_Yes
+        public RelayCommand? BonusesPayment_Yes
         {
             get
             {
@@ -526,7 +526,7 @@ namespace CoolStoreProject.KioskVVM
         /// <summary>
         /// Don't use bonuses on payment
         /// </summary>
-        internal RelayCommand? BonusesPayment_No
+        public RelayCommand? BonusesPayment_No
         {
             get
             {

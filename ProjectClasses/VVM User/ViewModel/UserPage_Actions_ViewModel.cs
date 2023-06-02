@@ -21,12 +21,12 @@ namespace CoolStoreProject.UserVVM
         /// <summary>
         /// Represents collection displaying in products list box
         /// </summary>
-        internal ObservableCollection<Product>? Products { get; set; }
+        public ObservableCollection<Product>? Products { get; set; }
 
         /// <summary>
         /// Represents current selected product in products list box
         /// </summary>
-        internal Product? CurrentProduct
+        public Product? CurrentProduct
         {
             get => UserController.CurrentProduct;
             set
@@ -39,7 +39,7 @@ namespace CoolStoreProject.UserVVM
         /// <summary>
         /// Represents displaying warning text
         /// </summary>
-        internal string? WarningText
+        public string? WarningText
         {
             get => warningText;
             set
@@ -52,7 +52,7 @@ namespace CoolStoreProject.UserVVM
         /// <summary>
         /// Represents weight inputting by user
         /// </summary>
-        internal string InputWeight
+        public string InputWeight
         {
             get => UserController.InputWeight;
             set
@@ -64,7 +64,7 @@ namespace CoolStoreProject.UserVVM
         //
 
         // Constructors
-        internal UserPage_Actions_ViewModel()
+        public UserPage_Actions_ViewModel()
         {
             LoadProductData(Environment.CurrentDirectory + @"\Data\Products.xml");
         }
@@ -76,7 +76,7 @@ namespace CoolStoreProject.UserVVM
         /// </summary>
         /// <param name="path"></param>
         /// <exception cref="Exception"></exception>
-        internal void LoadProductData(string path)
+        public void LoadProductData(string path)
         {
             try
             {
@@ -160,7 +160,7 @@ namespace CoolStoreProject.UserVVM
         /// <summary>
         /// Imitate product weighing and send it's result to the kiosk via control
         /// </summary>
-        internal RelayCommand? WeighCommand
+        public RelayCommand? WeighCommand
         {
             get
             {
@@ -185,7 +185,7 @@ namespace CoolStoreProject.UserVVM
         /// <summary>
         /// Imitate product scanning and send it's info to the kiosk via control
         /// </summary>
-        internal RelayCommand? ScanCommand
+        public RelayCommand? ScanCommand
         {
             get
             {
@@ -210,7 +210,7 @@ namespace CoolStoreProject.UserVVM
         /// <summary>
         /// Move to the payment view
         /// </summary>
-        internal RelayCommand? PaymentCommand
+        public RelayCommand? PaymentCommand
         {
             get
             {

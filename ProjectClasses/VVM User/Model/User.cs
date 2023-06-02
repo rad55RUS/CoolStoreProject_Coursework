@@ -28,41 +28,41 @@ namespace CoolStoreProject.UserVVM
 
         // Properties
         // Data
-        internal int ID {
+        public int ID {
             get => id;
         }
-        internal double Cash {
+        public double Cash {
             get => cash;
             set => cash = value;
         }
-        internal double CardMoney {
+        public double CardMoney {
             get => cardMoney;
             set => cardMoney = value;
         }
-        internal string BonusCard { 
+        public string BonusCard { 
             get => bonusCard;
             set => bonusCard = value;
         }
-        internal int Bonuses
+        public int Bonuses
         {
             get => bonuses;
             set => bonuses = value;
         }
         //
         // Representation
-        internal string ID_Representation {
+        public string ID_Representation {
             get => "User example " + id;
         }
-        internal string Cash_Representation {
+        public string Cash_Representation {
             get => "Cash: " + cash.ToString();
         }
-        internal string CardMoney_Representation {
+        public string CardMoney_Representation {
             get => "Card money: " + cardMoney.ToString();
         }
-        internal string BonusCard_Representation { 
+        public string BonusCard_Representation { 
             get => "Bonus card number: " + bonusCard;
         }
-        internal string Bonuses_Representation
+        public string Bonuses_Representation
         {
             get => "Bonuses: " + bonuses.ToString();
         }
@@ -70,7 +70,7 @@ namespace CoolStoreProject.UserVVM
         //
 
         // Constructors
-        internal User(double cash, double cardMoney, string bonusCard, int bonuses)
+        public User(double cash, double cardMoney, string bonusCard, int bonuses)
         {
             amount++;
 

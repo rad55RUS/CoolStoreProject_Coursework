@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace CoolStoreProject
 {
-    internal class RelayCommand : ICommand
+    public class RelayCommand : ICommand
     {
         // Fields
         private readonly Action<object> execute;
