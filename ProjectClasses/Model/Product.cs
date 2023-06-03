@@ -19,7 +19,7 @@ namespace CoolStoreProject
         private string name;
         private string imagePath;
         private double price;
-        private bool isWeighable;
+        private bool isWeighable = false;
         private int weight;
         private int volume;
         //
@@ -98,7 +98,6 @@ namespace CoolStoreProject
             this.name = name;
             this.imagePath = imagePath;
             this.price = price;
-            isWeighable = false;
             this.volume = volume;
         }
         //
