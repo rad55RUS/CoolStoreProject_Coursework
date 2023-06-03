@@ -5,10 +5,10 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CoolStoreProject.UserVVM"
       mc:Ignorable="d"
-      Width="458" Height="444">
+      Width="458" Height="500">
 
-    <Grid Background="White" Width="458" Height="450">
-        <ListBox ItemsSource="{Binding Products}" SelectedItem="{Binding CurrentProduct}" Margin="0,68,0,102">
+    <Grid Background="White" Width="458" Height="500">
+        <ListBox ItemsSource="{Binding Products}" SelectedItem="{Binding CurrentProduct}" Margin="0,68,0,133">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="5">
@@ -19,11 +19,12 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button Content="Scan" HorizontalAlignment="Left" Height="33" Margin="18,395,0,0" VerticalAlignment="Top" Width="121" Style="{StaticResource CommonButton}" Command="{Binding ScanCommand}"/>
+        <Button Content="Scan" HorizontalAlignment="Left" Height="33" Margin="20,406,0,0" VerticalAlignment="Top" Width="121" Style="{StaticResource CommonButton}" Command="{Binding ScanCommand}"/>
         <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Width="438" FontSize="16" TextAlignment="Center" Background="#FFF9FCFF" Foreground="Black" Margin="0,14,0,0"><Run Text="Select a product from the list and press button to scan it."/><LineBreak/><Run Text="Go to payment page when you've done"/><LineBreak/><Run/></TextBlock>
-        <Button Content="Weigh (G)" HorizontalAlignment="Left" Height="33" Margin="150,395,0,0" VerticalAlignment="Top" Width="121" Style="{StaticResource CommonButton}" Command="{Binding WeighCommand}"/>
-        <Button Content="Payment" Command="{Binding PaymentCommand}" HorizontalAlignment="Left" Height="33" VerticalAlignment="Top" Width="93" Margin="353,395,0,0" Style="{StaticResource FinishButton}"/>
-        <Label Content="{Binding WarningText}" HorizontalAlignment="Center" Height="31" Margin="0,348,0,0" VerticalAlignment="Top" Width="458" Background="#00000000" Foreground="#FFBB1111"/>
-        <TextBox HorizontalAlignment="Left" Height="33" Margin="276,395,0,0" TextWrapping="Wrap" Text="{Binding InputWeight}" VerticalAlignment="Top" Width="50" VerticalContentAlignment="Center"/>
+        <Button Content="Weigh (G)" HorizontalAlignment="Left" Height="33" Margin="152,406,0,0" VerticalAlignment="Top" Width="121" Style="{StaticResource CommonButton}" Command="{Binding WeighCommand}"/>
+        <Button Content="Payment" Command="{Binding PaymentCommand}" HorizontalAlignment="Left" Height="33" VerticalAlignment="Top" Width="93" Margin="355,406,0,0" Style="{StaticResource FinishButton}"/>
+        <Label Content="{Binding WarningText}" HorizontalAlignment="Center" Height="27" Margin="0,367,0,0" VerticalAlignment="Top" Width="458" Background="#00000000" Foreground="#FFBB1111"/>
+        <TextBox HorizontalAlignment="Left" Height="33" Margin="278,406,0,0" TextWrapping="Wrap" Text="{Binding InputWeight}" VerticalAlignment="Top" Width="50" VerticalContentAlignment="Center"/>
+        <Button Content="Return to selection page" Command="{Binding ReturnCommand}" HorizontalAlignment="Left" Height="33" VerticalAlignment="Top" Width="296" Margin="152,456,0,0" Style="{StaticResource FinishButton}"/>
     </Grid>
 </Page>

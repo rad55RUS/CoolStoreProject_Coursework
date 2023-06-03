@@ -14,9 +14,6 @@ namespace CoolStoreProject.UserVVM
     public class User
     {
         // Fields
-        // Static
-        private static int amount = 0;
-        //
         // Data
         private readonly int id;
         private double cash;
@@ -70,11 +67,9 @@ namespace CoolStoreProject.UserVVM
         //
 
         // Constructors
-        public User(double cash, double cardMoney, string bonusCard, int bonuses)
+        public User(int id, double cash, double cardMoney, string bonusCard, int bonuses)
         {
-            amount++;
-
-            this.id = amount - 1;
+            this.id = id;
             this.cash = cash;
             this.cardMoney = cardMoney;
             this.bonusCard = bonusCard;

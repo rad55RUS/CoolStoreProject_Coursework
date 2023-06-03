@@ -16,10 +16,6 @@ namespace CoolStoreProject
     public class Product
     {
         // Fields
-        // Static
-        private static int amount = -1;
-        //
-        private int id;
         private string name;
         private string imagePath;
         private double price;
@@ -30,11 +26,6 @@ namespace CoolStoreProject
 
         // Properties
         // Data
-        public int Id
-        {
-            get => id;
-            set => id = value;
-        }
         public string Name
         {
             get => name;
@@ -95,9 +86,6 @@ namespace CoolStoreProject
         // Constructors
         public Product(string name, string imagePath, double price, bool isWeighable, int weight)
         {
-            amount++;
-
-            id = amount;
             this.name = name;
             this.imagePath = imagePath;
             this.price = price;
@@ -107,9 +95,6 @@ namespace CoolStoreProject
 
         public Product(string name, string imagePath, double price, int volume)
         {
-            amount++;
-
-            id = amount;
             this.name = name;
             this.imagePath = imagePath;
             this.price = price;

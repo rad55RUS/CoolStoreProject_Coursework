@@ -11,7 +11,7 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <ListBox ItemsSource="{Binding Users}" SelectedItem="{Binding CurrentUser}" Margin="0,33,0,79">
+        <ListBox ItemsSource="{Binding Users}" SelectedItem="{Binding CurrentUser}" Margin="0,33,0,89">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="5">
@@ -25,7 +25,7 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Select user example from the list and press button to begin" VerticalAlignment="Top" Height="33" Width="458" FontSize="16" Grid.ColumnSpan="2" TextAlignment="Center" Background="#FFF9FCFF" Foreground="Black"/>
-        <Button Content="Start" HorizontalAlignment="Stretch"  VerticalAlignment="Bottom" Width="458" Height="43" Grid.ColumnSpan="2" Style="{StaticResource CommonButton}" Command="{Binding StartCommand}"/>
-        <Label Content="{Binding WarningText}" HorizontalAlignment="Center" Height="31" Margin="0,376,0,0" VerticalAlignment="Top" Width="458" Background="#00000000" Foreground="#FFBB1111"/>
+        <Button Content="Start"  VerticalAlignment="Bottom" Height="43" Style="{StaticResource CommonButton}" Command="{Binding StartCommand}" Margin="230,0,10,5"/>
+        <Label Content="{Binding WarningText}" HorizontalAlignment="Center" Height="26" Margin="0,366,0,0" VerticalAlignment="Top" Width="458" Background="#00000000" Foreground="#FFBB1111" RenderTransformOrigin="0.503,0.067"/>
     </Grid>
 </Page>

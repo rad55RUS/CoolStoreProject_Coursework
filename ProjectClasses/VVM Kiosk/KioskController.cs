@@ -17,11 +17,16 @@ namespace CoolStoreProject.KioskVVM
     internal class KioskController
     {
         // Fields
+        private static KioskController? instance;
+        // ViewModels
         private static readonly Window_ViewModel window_ViewModel = new();
         private static KioskPage_Main_ViewModel kioskPage_Main_ViewModel = new();
+        //
+        // Views
         private static KioskPage_ScanWaiting kioskScanWaiting_Page = new();
         private static KioskPage_Main kioskPage_Main = new();
-        private readonly KioskWindow? kioskWindow;
+        private static KioskWindow? kioskWindow;
+        //
         //
 
         // Properties
@@ -48,7 +53,7 @@ namespace CoolStoreProject.KioskVVM
         //
 
         // Constructors
-        public KioskController(KioskWindow initial)
+        private KioskController(KioskWindow initial)
         {
             kioskWindow = initial;
             kioskWindow.DataContext = window_ViewModel;
@@ -56,6 +61,19 @@ namespace CoolStoreProject.KioskVVM
             CurrentPage = kioskScanWaiting_Page;
 
             kioskWindow.Show();
+        }
+
+        /// <summary>
+        /// Get single realization of the controller
+        /// </summary>
+        /// <returns></returns>
+        public static KioskController GetInstance(KioskWindow initial)
+        {
+            if (instance  == null)
+            {
+                instance = new(initial);
+            }
+            return instance;
         }
         //
 
@@ -107,7 +125,7 @@ namespace CoolStoreProject.KioskVVM
         }
 
         /// <summary>
-        /// Resetting kiosk data
+        /// Resetting controller data
         /// </summary>
         public static void ResetData()
         {

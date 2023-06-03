@@ -187,7 +187,7 @@ namespace CoolStoreProject.KioskVVM
                 {
                     return Visibility.Collapsed;
                 }
-            } 
+            }
         }
 
         /// <summary>
@@ -242,7 +242,7 @@ namespace CoolStoreProject.KioskVVM
         //
 
         // Constructors
-        public KioskPage_Main_ViewModel()
+        internal KioskPage_Main_ViewModel()
         {
             BasketContent = new ObservableCollection<BasketProduct>();
         }
@@ -256,7 +256,7 @@ namespace CoolStoreProject.KioskVVM
         public void WeighProduct(int weight)
         {
             string displayedWeightString;
-            if (weighableProductPrice != 0)
+            if (weighableProductPrice != 0 && weight > 20)
             {
                 if (weight >= 1000)
                 {
@@ -477,6 +477,23 @@ namespace CoolStoreProject.KioskVVM
                           IsPaymentWaiting = true;
                           WaitingText = "Ожидание оплаты товаров. Не забудьте сперва приложить бонусную карту.";
                       }
+                  }));
+            }
+        }
+
+        private RelayCommand? clearCommand;
+
+        /// <summary>
+        /// Clear basket
+        /// </summary>
+        public RelayCommand? ClearCommand
+        {
+            get
+            {
+                return clearCommand ??
+                  (clearCommand = new RelayCommand(obj =>
+                  {
+                      KioskController.ResetData();
                   }));
             }
         }

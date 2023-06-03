@@ -22,7 +22,7 @@ namespace CoolStoreProject.KioskVVM
     /// </summary>
     public partial class KioskPage_Main : Page
     {
-        public KioskPage_Main()
+        internal KioskPage_Main()
         {
             InitializeComponent();
         }

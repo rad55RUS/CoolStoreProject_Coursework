@@ -28,7 +28,8 @@ namespace CoolStoreProject.UserVVM
         /// <summary>
         /// Represents current user selected in user list box
         /// </summary>
-        public User ?CurrentUser {
+        public User ?CurrentUser 
+        {
             get => UserController.CurrentUser;
             set
             {
@@ -149,7 +150,7 @@ namespace CoolStoreProject.UserVVM
                                 }
                             }
 
-                            Users.Add(new(cash, cardMoney, bonusCard, bonuses));
+                            Users.Add(new(Users.Count, cash, cardMoney, bonusCard, bonuses));
                         }
                     }
                 }
@@ -177,7 +178,7 @@ namespace CoolStoreProject.UserVVM
                       if (CurrentUser != null)
                       {
                           UserController.CurrentPage = UserController.UserPage_Actions;
-                          UserController.LaunchKiosk();
+                          UserController.Start();
                           WarningText = "";
                       }
                       else

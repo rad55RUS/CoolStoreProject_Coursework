@@ -26,7 +26,7 @@ namespace CoolStoreProject.UserVVM
         {
             InitializeComponent();
 
-            controller = new UserController(this);
+            controller = UserController.GetInstance(this);
         }
     }
 }

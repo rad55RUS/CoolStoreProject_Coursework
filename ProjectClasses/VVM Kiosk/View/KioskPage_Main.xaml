@@ -203,8 +203,18 @@
             </Button>
             <TextBlock HorizontalAlignment="Left" Height="45" Margin="193,467,0,0" TextWrapping="Wrap" Text="{Binding PaymentAmount}"  VerticalAlignment="Top" Width="277" FontFamily="Nirmala UI" FontSize="22" Foreground="#FF272727"/>
             <TextBlock HorizontalAlignment="Left" Height="45" Margin="10,466,0,0" TextWrapping="Wrap" Text="Сумма к оплате:"  VerticalAlignment="Top" Width="178" FontFamily="Nirmala UI" FontSize="22" Foreground="#FF272727" FontWeight="Bold"/>
+            <Button Content="Очистить корзину" Command="{Binding ClearCommand}" Visibility="{Binding PaymentButtonVisibility}" HorizontalAlignment="Left" Height="42" Margin="492,466,0,0" VerticalAlignment="Top" Width="199" Foreground="White" FontFamily="Nirmala UI" FontSize="18" BorderBrush="{x:Null}">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="18"/>
+                    </Style>
+                </Button.Resources>
+                <Button.Style>
+                    <StaticResource ResourceKey="NegativeButton"/>
+                </Button.Style>
+            </Button>
         </Grid>
-        <Grid HorizontalAlignment="Center" Height="520" VerticalAlignment="Top" Width="940" Grid.RowSpan="2" Background="#54000000" Visibility="{Binding PaymentVisibility}">
+        <Grid HorizontalAlignment="Center" Height="520" VerticalAlignment="Top" Width="940" Grid.RowSpan="2" Background="#54000000" Visibility="{Binding PaymentVisibility}" d:IsHidden="True">
             <TextBlock Text="{Binding WaitingText}" HorizontalAlignment="Center" Height="158" VerticalAlignment="Top" Width="856" FontFamily="Nirmala UI" FontSize="36" FontWeight="Bold" Foreground="White" TextWrapping="Wrap" TextAlignment="Center" Margin="0,88,0,0"/>
             <Button Content="Назад" Command="{Binding ReturnCommand}" Style="{StaticResource NegativeButton}" Visibility="{Binding PaymentButtonVisibility}" HorizontalAlignment="Left" Height="42" Margin="731,466,0,0" VerticalAlignment="Top" Width="199" Foreground="White" FontFamily="Nirmala UI" FontSize="18" BorderBrush="{x:Null}">
                 <Button.Resources>

@@ -17,25 +17,24 @@ namespace CoolStoreProject.UserVVM
     internal class UserController
     {
         // Fields
-        // Static
+        private static UserController? instance;
         // ViewModels
         private static readonly Window_ViewModel Window_ViewModel = new();
-        private static readonly UserPage_Selection_ViewModel userPage_Selection_ViewModel = new();
-        private static readonly UserPage_Actions_ViewModel userPage_Actions_ViewModel = new();
-        private static readonly UserPage_Payment_ViewModel userPage_Payment_ViewModel = new();
+        private static UserPage_Selection_ViewModel userPage_Selection_ViewModel = new();
+        private static UserPage_Actions_ViewModel userPage_Actions_ViewModel = new();
+        private static UserPage_Payment_ViewModel userPage_Payment_ViewModel = new();
         //
-        // Pages
-        private static readonly UserPage_Selection userPage_Selection = new();
-        private static readonly UserPage_Actions userPage_Actions = new();
-        private static readonly UserPage_Payment userPage_Payment = new();
+        // Views
+        private static UserPage_Selection userPage_Selection = new();
+        private static UserPage_Actions userPage_Actions = new();
+        private static UserPage_Payment userPage_Payment = new();
+        private static UserWindow userWindow;
         //
         // Current values
         private static string inputWeight = "0";
         private static Product? currentProduct;
         private static User? currentUser;
         //
-        private static KioskController ?kioskController;
-        private readonly UserWindow userWindow;
         //
 
         // Properties
@@ -90,12 +89,31 @@ namespace CoolStoreProject.UserVVM
         //
 
         // Constructors
-        public UserController(UserWindow initial)
+        private UserController(UserWindow initial)
         {
+            // User window initialization
             userWindow = initial;
             userWindow.DataContext = Window_ViewModel;
             userPage_Selection.DataContext = userPage_Selection_ViewModel;
             CurrentPage = userPage_Selection;
+            //
+
+            // Kiosk window initialization
+            KioskWindow kioskWindow = new();
+            //
+        }
+
+        /// <summary>
+        /// Get single realization of the controller
+        /// </summary>
+        /// <returns></returns>
+        public static UserController GetInstance(UserWindow initial)
+        {
+            if (instance == null)
+            {
+                instance = new(initial);
+            }
+            return instance;
         }
         //
 
@@ -103,12 +121,12 @@ namespace CoolStoreProject.UserVVM
         /// <summary>
         /// Launch kiosk app
         /// </summary>
-        public static void LaunchKiosk()
+        public static void Start()
         {
-            kioskController = new KioskController(new KioskWindow());
-
             userPage_Actions.DataContext = userPage_Actions_ViewModel;
             userPage_Payment.DataContext = userPage_Payment_ViewModel;
+
+            KioskController.ResetData();
         }
 
         /// <summary>
@@ -149,6 +167,24 @@ namespace CoolStoreProject.UserVVM
         public static void SendBonusesPayment()
         {
             KioskController.GetBonusesPayment(CurrentUser.Bonuses);
+        }
+
+        /// <summary>
+        /// Resetting controller data
+        /// </summary>
+        public static void ResetData()
+        {
+            userPage_Selection_ViewModel = new();
+            userPage_Actions_ViewModel = new();
+            userPage_Payment_ViewModel = new();
+
+            userPage_Selection = new();
+            userPage_Actions = new();
+            userPage_Payment = new();
+
+            userWindow.DataContext = Window_ViewModel;
+            userPage_Selection.DataContext = userPage_Selection_ViewModel;
+            CurrentPage = userPage_Selection;
         }
         //
     }

@@ -10,19 +10,11 @@ namespace CoolStoreProject.KioskVVM
     internal class BasketProduct
     {
         // Fields
-        // Static
-        private static int amount = -1;
-        //
-        private readonly int id;
         private readonly string name;
         private readonly double price;
         //
 
         // Properties
-        public int Id 
-        {
-            get => id;
-        }
         public string DisplayingName
         {
             get
@@ -39,8 +31,6 @@ namespace CoolStoreProject.KioskVVM
         // Constructors
         public BasketProduct(string name, double price)
         {
-            amount++;
-            this.id = amount;
             this.name = name;
             this.price = price;
         }

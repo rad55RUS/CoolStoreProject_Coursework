@@ -221,6 +221,23 @@ namespace CoolStoreProject.UserVVM
                   }));
             }
         }
+
+        private RelayCommand? returnCommand;
+
+        /// <summary>
+        /// Move to the payment view
+        /// </summary>
+        public RelayCommand? ReturnCommand
+        {
+            get
+            {
+                return returnCommand ??
+                  (returnCommand = new RelayCommand(obj =>
+                  {
+                      UserController.ResetData();
+                  }));
+            }
+        }
         //
 
         // INotifyPropertyChanged realization

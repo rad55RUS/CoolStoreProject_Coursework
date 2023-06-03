@@ -20,7 +20,7 @@ namespace CoolStoreProject.KioskVVM
     /// </summary>
     public partial class KioskPage_ScanWaiting : Page
     {
-        public KioskPage_ScanWaiting()
+        internal KioskPage_ScanWaiting()
         {
             InitializeComponent();
         }
